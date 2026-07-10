@@ -24,6 +24,7 @@ import {
   Users,
   Workflow,
 } from "lucide-react";
+import technologyBanner from "../assets/image/technology.png";
 
 export const technologyHero = {
   eyebrow: "Industrial Architecture",
@@ -31,7 +32,7 @@ export const technologyHero = {
   highlight: "From Machine Signal to Actionable Decision",
   description:
     "A secure, modular architecture for connected manufacturing—from PLCs, test panels and scanners to edge processing, structured storage, quality applications, dashboards, alerts and automated reports.",
-  image: "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?auto=format&fit=crop&w=1600&q=90",
+image:technologyBanner,
 };
 
 export const technologyStats = [
@@ -74,8 +75,20 @@ export const architectureLayers = [
   },
 ];
 
-export const protocols = ["OPC UA", "Modbus TCP/RTU", "EtherNet/IP", "PROFINET", "MQTT", "HTTP/HTTPS", "TCP/IP", "Serial RS-232/485"];
+export const protocols = [
+  "OPC UA",
+  "Modbus TCP",
 
+  "EtherNet/IP",
+
+  "MQTT",
+  "REST APIs",
+  "HTTP / HTTPS",
+  "TCP / IP",
+  "WebSocket",
+  "RS-232",
+  "RS-485",
+];
 export const integrationSources = [
   { icon: Factory, title: "PLCs & Machines", text: "Cycle, status, count, recipe and process signals." },
   { icon: PanelTop, title: "Test Panels", text: "Safety, RPM, runout, performance, HV, LC and IR results." },
@@ -130,7 +143,7 @@ export const techStack = [
 export const technologyHighlights = [
   { icon: Cable, title: "PLC & Tester Integration", text: "Connect PLCs, HMIs, testers and industrial equipment using source-appropriate protocols and robust handshakes." },
   { icon: Router, title: "Edge Computing & IIoT Gateways", text: "Collect, filter, buffer and process data close to equipment for reliable local operation." },
-  { icon: Workflow, title: "Node-RED Automation", text: "Build maintainable event flows for routing, transformation, validation, alerting and integration." },
+  { icon: Workflow, title: "Test Automation", text: "Build maintainable event flows for routing, transformation, validation, alerting and integration." },
   { icon: Database, title: "Industrial Data Design", text: "Structure production, quality, traceability and time-series records for fast search and reliable reporting." },
   { icon: ShieldCheck, title: "Secure Hybrid Architecture", text: "Combine local operation with controlled synchronization, role-based access and protected data exchange." },
   { icon: Activity, title: "Analytics & Monitoring", text: "Deliver OEE, downtime, quality trends, live machine views and actionable operational dashboards." },

@@ -21,6 +21,7 @@ import {
   processSteps,
   manufacturerBenefits,
 } from "../content/home";
+import TestAutomationSection from "../components/common/TestAutomationSection";
 
 export default function Home() {
   return (
@@ -47,6 +48,7 @@ export default function Home() {
       </section>
 
       <Container className="-mt-1 py-5"><MetricStrip items={quickHighlights} /></Container>
+      <TestAutomationSection/>
 
       <CustomerShowcase compact />
 
@@ -91,7 +93,7 @@ export default function Home() {
           <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="rounded-3xl border border-slate-200 bg-white p-6">
               <SectionHeading eyebrow="Test Automation" title="Production & Safety Test" highlight="Coverage" description="Connect test panels and testers directly to DigiQA for controlled test execution, live values and traceable results." />
-              <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-2">
                 {testCoverage.map((item) => <FeatureCard key={item.title} {...item} compact />)}
               </div>
             </div>

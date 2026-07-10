@@ -185,20 +185,22 @@ export const impactStats = [
 export const iiotExcellence = {
   eyebrow: "IIoT Excellence",
 
-  title: "From Machine Data to",
+  title: "From Industrial Data to",
 
   highlight: "Actionable Intelligence",
 
   description:
-    "Our IIoT ecosystem captures industrial data from machines and test systems, transports it securely, processes it through edge and application layers and transforms it into useful insights for quality, production and management teams.",
+    "Our IIoT ecosystem connects machines, test systems, utilities and production processes to create a unified flow of trusted data, real-time visibility and actionable insights across quality, production, energy and management operations.",
 
   stages: [
     {
       icon: Database,
       number: "01",
-      title: "Data Acquisition",
+      title: "Connect & Capture",
+
       description:
-        "Capture production, testing, energy, quality and machine data directly from industrial equipment and digital systems.",
+        "Collect reliable production, testing, energy, quality and machine data directly from industrial equipment and connected systems.",
+
       items: [
         "PLC Data",
         "Machine Signals",
@@ -208,12 +210,15 @@ export const iiotExcellence = {
         "Industrial Sensors",
       ],
     },
+
     {
       icon: Network,
       number: "02",
-      title: "Data Transportation",
+      title: "Transport & Integrate",
+
       description:
-        "Move industrial information securely from factory-floor equipment to edge, local and centralized platforms.",
+        "Securely move and integrate industrial data across machines, edge devices, plant networks and centralized applications.",
+
       items: [
         "OPC UA",
         "Modbus",
@@ -223,12 +228,15 @@ export const iiotExcellence = {
         "Serial Communication",
       ],
     },
+
     {
       icon: Cpu,
       number: "03",
-      title: "Data Processing & Applications",
+      title: "Process & Act",
+
       description:
-        "Validate, normalize and transform raw production data into dashboards, reports, alerts and actionable workflows.",
+        "Transform raw industrial data into validated records, dashboards, reports, alerts and workflows that support faster operational decisions.",
+
       items: [
         "DigiQA",
         "EMS",

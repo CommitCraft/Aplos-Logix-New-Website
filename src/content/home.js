@@ -26,7 +26,7 @@ export const homeHero = {
   title: "Industrial Quality, Production & Live Factory Intelligence",
   description:
     "Aplos Logix connects machines, test stations, operators and production data into one intelligent platform for quality, OEE, downtime, traceability, live visibility and automated reporting.",
-  services: ["EMS & QMS", "OEE & Downtime", "Serial Number Mapping", "Safety & Performance Tests", "Live Data", "Daily Reports"],
+  services: ["EMS & QMS", "OEE & Downtime", "Autometic Label Printing", "Safety & Performance Tests", "Live Data", "Daily Reports"],
   factoryImage: "https://cdn.sanity.io/images/03hnmfyj/production/213029123782fdda8d0b4e868245ff1e3561f2b1-4155x2765.jpg",
 };
 
@@ -35,16 +35,24 @@ export const quickHighlights = [
   { icon: Gauge, value: "OEE", label: "Performance monitoring" },
   { icon: TimerReset, value: "DOWN", label: "Downtime control" },
   { icon: FileSpreadsheet, value: "AUTO", label: "Daily reports" },
-  { icon: QrCode, value: "MAP", label: "Serial mapping" },
+  { icon: QrCode, value: "LABEL", label: "Autometic Label Printing" },
   { icon: Boxes, value: "TRACE", label: "End-to-end genealogy" },
 ];
 
 export const platformModules = [
-  { icon: ChartNoAxesCombined, title: "EMS Dashboard", text: "Monitor equipment, utilities and plant conditions with live trends, alarms and energy-focused insights." },
+{
+  icon: ChartNoAxesCombined,
+  title: "EMS Dashboard",
+  text: "Track energy consumption, demand and power parameters with real-time trends and alerts.",
+},
   { icon: ClipboardCheck, title: "QMS Suite", text: "Manage quality workflows, inspections, CAPA-ready records, audit visibility and continuous improvement actions." },
   { icon: Gauge, title: "OEE Dashboard", text: "Track availability, performance and quality across machines, lines, shifts and plants." },
   { icon: TimerReset, title: "Downtime Monitoring", text: "Capture planned and unplanned stops, reason codes, MTTR, MTBF and recurring loss patterns." },
-  { icon: QrCode, title: "Serial Number Mapping", text: "Map and track serial numbers, components and process history across every production stage." },
+{
+  icon: QrCode,
+  title: "Label Printing",
+  text: "Print accurate product, rating plate, QR and MRP labels directly from production data.",
+},
   { icon: FileSpreadsheet, title: "Daily Reports", text: "Automatically generate shift, daily, quality, rejection and production reports with actionable KPIs." },
   { icon: Activity, title: "Live Data Monitoring", text: "Stream machine, sensor, tester and process data for real-time visualization and decision support." },
   { icon: Siren, title: "ANDON Dashboard", text: "Show alerts, callouts, line status, escalation timers and operator notifications in real time." },
@@ -61,7 +69,11 @@ export const iiotExcellence = {
     { icon: Gauge, title: "OEE & Downtime", text: "Availability, performance, quality and detailed downtime loss visibility." },
     { icon: Network, title: "Traceability & Genealogy", text: "Serial search, parent-child mapping and full production history." },
     { icon: FileSpreadsheet, title: "Automated Reporting", text: "Scheduled Excel/PDF reports, alerts and distribution workflows." },
-    { icon: Workflow, title: "EMS & QMS", text: "Structured environmental, equipment and quality management workflows." },
+{
+  icon: Workflow,
+  title: "EMS & QMS",
+  text: "Manage energy usage and quality processes with connected data, alerts and traceability.",
+},
     { icon: RadioTower, title: "Live Data Streams", text: "Near real-time machine and tester visibility for operators and supervisors." },
   ],
 };
@@ -77,10 +89,6 @@ export const testCoverage = [
   { icon: ShieldCheck, title: "Safety Test Panel", text: "Electrical safety, protection circuits and guarded test sequencing." },
   { icon: Gauge, title: "RPM Test", text: "Speed and spindle RPM accuracy with operational limit validation." },
   { icon: Activity, title: "Runout Test", text: "Runout, concentricity and dimensional deviation measurement." },
-  { icon: BarChart3, title: "Performance Test", text: "Functional performance under configured operating conditions." },
-  { icon: Zap, title: "HV Test", text: "High-voltage insulation withstand and electrical safety testing." },
-  { icon: PanelTop, title: "LC Test", text: "Inductance, capacitance and electrical component measurement." },
-  { icon: Workflow, title: "IR Test", text: "Insulation resistance and leakage validation for electrical assemblies." },
   { icon: ClipboardCheck, title: "End-of-Line Validation", text: "Final automated validation with complete PASS/FAIL traceability." },
 ];
 

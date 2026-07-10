@@ -1,4 +1,4 @@
-import { Activity, BarChart3, BellRing, Boxes, ClipboardCheck, FileSpreadsheet, Gauge, Network, PanelTop, QrCode, RadioTower, Search, ShieldCheck, Siren, TimerReset, Users, Workflow, Zap } from "lucide-react";
+import { Activity, BarChart3,ChartNoAxesCombined, BellRing, Boxes, ClipboardCheck, FileSpreadsheet, Gauge, Network, PanelTop, QrCode, RadioTower, Search, ShieldCheck, Siren, TimerReset, Users, Workflow, Zap } from "lucide-react";
 import digiqa_image from "../assets/image/digi_qa_banner.svg"
 export const digiqaHero = {
   title: "Complete Digital Quality & Test Automation Ecosystem",
@@ -17,22 +17,25 @@ export const digiqaModules = [
   { icon: Network, title: "Parent-Child Traceability", text: "Maintain complete pedigree across assemblies and components with forward and backward search.", preview: "Parent A-1000 → Sub B-2000 → C-3000" },
   { icon: ShieldCheck, title: "Role-Based Access", text: "Control access by role, plant, station and responsibility with audit-ready permissions.", preview: "Admin • Quality Manager • Operator • Viewer" },
   { icon: FileSpreadsheet, title: "LAN Excel Download", text: "Export plant data directly to Excel over LAN with secure filtered access.", preview: "LAN Connected • Export Ready" },
-  { icon: BarChart3, title: "EMS Dashboard", text: "Monitor plant environment, utilities and equipment conditions in live dashboards.", preview: "Temp 26.4°C • RH 54% • Air Quality: Good" },
-  { icon: ClipboardCheck, title: "QMS Suite", text: "Manage audits, quality plans, inspection records, NCR/CAPA workflows and compliance status.", preview: "Open NCR 18 • CAPA 7 • Compliance 98.2%" },
+{
+  icon: ChartNoAxesCombined,
+  title: "EMS Dashboard",
+  text: "Track energy consumption, demand and power parameters with real-time trends and alerts.",
+},  { icon: ClipboardCheck, title: "QMS Suite", text: "Manage audits, quality plans, inspection records, NCR/CAPA workflows and compliance status.", preview: "Open NCR 18 • CAPA 7 • Compliance 98.2%" },
   { icon: Gauge, title: "OEE Dashboard", text: "Track OEE by line, machine and shift with availability, performance and quality breakdown.", preview: "OEE 92.1 • A 96.8 • P 91.6 • Q 98.2" },
   { icon: TimerReset, title: "Downtime Monitoring", text: "Capture planned and unplanned downtime with reason codes, owners and root-cause visibility.", preview: "Events 128 • Open 22 • MTTR 12 min" },
   { icon: RadioTower, title: "Live Data Monitoring", text: "Stream RPM, pressure, current, vibration and other process values directly from machines and testers.", preview: "RPM 1450 • Current 12.5A • Pressure 5.2 bar" },
-  { icon: QrCode, title: "Serial Number Mapping", text: "Map units and components through process stages with barcode, QR and serial-based identity.", preview: "Assembly → Test → Packing → Dispatch" },
-];
+{
+  icon: QrCode,
+  title: "Label Printing",
+  text: "Generate and print product, rating plate, QR and MRP labels directly from production data.",
+  preview: "Product Data → Label Generate → Print → Apply",
+},];
 
 export const digiqaTests = [
   { icon: ShieldCheck, title: "Safety Test Panel", text: "Validate safety circuits, interlocks, guards and emergency systems." },
   { icon: Gauge, title: "RPM Test", text: "Test motor and spindle RPM accuracy and performance." },
   { icon: Activity, title: "Runout Test", text: "Measure runout and dimensional precision." },
-  { icon: BarChart3, title: "Performance Test", text: "Validate load, function and operating benchmarks." },
-  { icon: Zap, title: "HV Test", text: "High-voltage insulation and withstand testing." },
-  { icon: PanelTop, title: "LC Test", text: "Inductance and capacitance measurement." },
-  { icon: Workflow, title: "IR Test", text: "Insulation resistance and leakage verification." },
   { icon: ClipboardCheck, title: "End-of-Line Validation", text: "Final PASS/FAIL validation before dispatch." },
 ];
 

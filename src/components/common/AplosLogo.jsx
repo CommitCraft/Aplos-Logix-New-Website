@@ -29,9 +29,11 @@ export default function AplosLogo({ light = false, showTagline = true }) {
       fontSize: "clamp(20px, 2.2vw, 28px)",
       fontFamily: "Georgia, 'Times New Roman', serif",
       fontWeight: 700,
-      color: "#e6782f",
+      color: "#F54900",
       letterSpacing: "2px",
       lineHeight: 1,
+      
+      
     },
     tagline: {
       fontSize: "clamp(7px, 0.9vw, 11px)",
