@@ -156,6 +156,40 @@ export default function IIoTVennDiagram() {
           r="75"
           fill="url(#centerGlow)"
         />
+         <circle cx="250" cy="260" r="50" fill="#172554" opacity="0.92" />
+
+        <text
+          x="250"
+          y="230"
+          textAnchor="middle"
+          fill="white"
+          fontSize="12"
+          fontWeight="900"
+        >
+          IIoT
+        </text>
+
+        <text
+          x="250"
+          y="270"
+          textAnchor="middle"
+          fill="#fb923c"
+          fontSize="14"
+          fontWeight="900"
+        >
+          Intelligence
+        </text>
+
+        <text
+          x="250"
+          y="280"
+          textAnchor="middle"
+          fill="#bfdbfe"
+          fontSize="9"
+          fontWeight="700"
+        >
+          Insight → Action
+        </text>
 
         {/* Circle labels */}
         <text
@@ -218,6 +252,16 @@ export default function IIoTVennDiagram() {
           strokeWidth="3"
           markerEnd="url(#arrowHead)"
         />
+        <text
+          x="424"
+          y="82"
+          textAnchor="middle"
+          fill="#f97316"
+          fontSize="12"
+          fontWeight="900"
+        >
+          Action
+        </text>
       </svg>
     </div>
   );

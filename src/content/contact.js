@@ -8,10 +8,49 @@ export const contactHero = {
 };
 
 export const contactCards = [
-  { icon: MapPin, title: "Head Office", lines: [company.name, company.location] },
-  { icon: Phone, title: "Phone", lines: [company.phone, company.hours] },
-  { icon: Mail, title: "Email", lines: [company.email, company.supportEmail] },
-  { icon: Headphones, title: "Support", lines: [company.supportEmail, company.hours] },
+  {
+    icon: MapPin,
+    title: "Head Office",
+    lines: [
+      company.name,
+      company.location,
+    ],
+  },
+
+  {
+  icon: MapPin,
+  title: "Workshop",
+  lines: [
+    `${company.name}, Workshop Unit`,
+    company.workshopLocation,
+  ],
+},
+
+  {
+    icon: Phone,
+    title: "Phone",
+    lines: [
+      ...company.phone,
+      company.hours,
+    ],
+  },
+
+  {
+    icon: Mail,
+    title: "Email",
+    lines: [
+      ...company.email,
+    ],
+  },
+
+  {
+    icon: Headphones,
+    title: "Support",
+    lines: [
+      company.supportEmail,
+      company.hours,
+    ],
+  },
 ];
 
 export const helpCards = [
