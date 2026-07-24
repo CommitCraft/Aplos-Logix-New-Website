@@ -21,20 +21,20 @@ import {
   BarChart3
 } from "lucide-react";
 
-import panelImage from "../assets/image/big_panel.png";
-
-/* =========================================================
-   HERO
-========================================================= */
+import platformChart from "../assets/image/platform_chart.svg";
+import modMachine from "../assets/image/mod_machine.webp";
+import modOee from "../assets/image/mod_oee.webp";
+import modQuality from "../assets/image/mod_quality.webp";
+import modInventory from "../assets/image/mod_inventory.webp";
 
 export const aboutHero = {
-  eyebrow: "About Aplos Logix Pvt. Ltd.",
-  title: "Transforming Manufacturing with",
-  highlight: "Connected Intelligence",
+  eyebrow: "Aplos Logix IIoT & MES Suite",
+  title: "Transform Factory Operations with Smart Technology.",
+  highlight: "Fast.",
   description:
     "We design enterprise-grade IIoT, MES, OEE, and DigiQA solutions that simplify complex shop floor operations, connect legacy and modern PLCs, and empower manufacturers with real-time actionable visibility.",
-  image: panelImage,
-  imageAlt: "Aplos Logix Pvt. Ltd. Industrial Automation & IIoT Platform",
+  image: platformChart,
+  imageAlt: "Aplos Logix IIoT Platform Architecture & Device Replication Chart",
   points: [
     "100% Paperless DigiQA & Quality Gate Enforcements",
     "Real-time OEE, Downtime Pareto & Rejection Root-Cause Tracking",
@@ -43,6 +43,68 @@ export const aboutHero = {
     "Predictive Energy Management (EMS) & Peak Load Optimization"
   ],
 };
+
+export const heroProductsStrip = [
+  {
+    icon: Cpu,
+    title: "Aplos Edge AI",
+    desc: "Agentic PLC ingestion & edge nodes"
+  },
+  {
+    icon: Gauge,
+    title: "OEE Intelligence",
+    desc: "Measure uptime & downtime impact"
+  },
+  {
+    icon: Workflow,
+    title: "DigiQA Pipelines",
+    desc: "Automated test stations & quality gates"
+  },
+  {
+    icon: Database,
+    title: "Traceability SCM",
+    desc: "Parent-child serial genealogy & BOM"
+  }
+];
+
+export const platformTabsData = [
+  {
+    id: "aplos-edge",
+    name: "Aplos Edge AI",
+    icon: Cpu,
+    title: "Focus on zero-downtime manufacturing while AI edge nodes monitor PLCs continuously",
+    desc: "Aplos Edge AI works across Siemens, Fanuc, Omron, and Modbus PLCs to streamline shop floor telemetry. Capture 1 KHz high-frequency signals, validate test station parameters, troubleshoot downtime causes, and automate ANDON siren alerts — all while keeping production lines running smoothly.",
+    image: modMachine,
+    link: "/solutions"
+  },
+  {
+    id: "oee-analytics",
+    name: "OEE & Plant Intelligence",
+    icon: Gauge,
+    title: "Real-time OEE intelligence & downtime Pareto for modern plant leaders",
+    desc: "Measure overall equipment effectiveness (OEE), accelerate line velocity with empirical data, and eliminate hidden machine stops across discrete and process manufacturing lines.",
+    image: modOee,
+    link: "/solutions"
+  },
+  {
+    id: "digi-qa",
+    name: "DigiQA & Test Gates",
+    icon: Workflow,
+    title: "Build automated test station pipelines & paperless quality gates",
+    desc: "Connect electrical safety testers, leak detectors, and performance panels directly to digital quality gates where parts are tested, with AI pass/fail interlocking and zero manual logbooks.",
+    image: modQuality,
+    link: "/solutions"
+  },
+  {
+    id: "traceability",
+    name: "Serial Traceability & ERP Sync",
+    icon: Database,
+    title: "100% Parent-child serial genealogy & seamless ERP integration",
+    desc: "Elevate your manufacturing delivery from assembly planning to final dispatch, with built-in barcode label printing, SAP REST API connectors, and full warranty genealogy.",
+    image: modInventory,
+    link: "/solutions"
+  }
+];
 
 /* =========================================================
    WHO WE ARE

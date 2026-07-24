@@ -1,8 +1,12 @@
-import { ArrowRight, Check, Quote, Sparkles, CheckCircle2, Factory, ShieldCheck, Zap, Cpu, Database, BrainCircuit, Rocket, Target, Award } from "lucide-react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowRight, Check, ChevronRight, Quote, Sparkles, CheckCircle2, Factory, ShieldCheck, Zap, Cpu, Database, BrainCircuit, Rocket, Target, Award } from "lucide-react";
 
 import {
   aboutHero,
   aboutIntro,
+  heroProductsStrip,
+  platformTabsData,
   missionSection,
   visionSection,
   philosophy,
@@ -15,7 +19,6 @@ import {
 } from "../content/about";
 
 import Container from "../components/common/Container";
-import PageHero from "../components/common/PageHero";
 import SectionHeading from "../components/common/SectionHeading";
 import CustomerShowcase from "../components/common/CustomerShowcase";
 import PromiseGrid from "../components/common/PromiseGrid";
@@ -24,21 +27,192 @@ import DashboardMockup from "../components/common/DashboardMockup";
 import IIoTVennDiagram from "../components/common/IIoTVennDiagram";
 import AnimatedCounter from "../components/common/AnimatedCounter";
 
+import iiotBannerOv1 from "../assets/image/iiot_banner_ov1.svg";
+import iiotBannerOv2 from "../assets/image/iiot_banner_ov2.svg";
+import iiotBannerOv3 from "../assets/image/iiot_banner_ov3.svg";
+
 export default function About() {
+  const [activePlatformTab, setActivePlatformTab] = useState("aplos-edge");
+  const currentTabObj = platformTabsData.find((t) => t.id === activePlatformTab) || platformTabsData[0];
+
   return (
     <main className="overflow-hidden bg-slate-50">
       {/* ══════════════════════════════════════
-          § 1 — HERO BANNER
+          § 1 — DOUBLE CONTAINER HERO (Atlassian Software Collection Inspired)
       ══════════════════════════════════════ */}
-      <PageHero
-        eyebrow={aboutHero.eyebrow}
-        title={aboutHero.title}
-        highlight={aboutHero.highlight}
-        description={aboutHero.description}
-        image={aboutHero.image}
-        bullets={aboutHero.points}
-        imageAlt={aboutHero.imageAlt}
-      />
+      <section className="relative overflow-hidden bg-[#091e42] text-white">
+        {/* Top Split Layer */}
+        <div className="relative py-16 lg:py-24 aplos-grid">
+          <div className="pointer-events-none absolute -top-32 -left-32 h-96 w-96 rounded-full bg-blue-600/20 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-amber-500/20 blur-3xl" />
+
+          <Container className="relative z-10 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            {/* Left Column: Heading & Content */}
+            <div className="flex flex-col gap-6">
+              <span className="inline-flex w-fit items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-1.5 text-[11px] font-extrabold uppercase tracking-widest text-amber-400">
+                <Sparkles size={13} /> {aboutHero.eyebrow}
+              </span>
+
+              <h1 className="text-4xl font-black leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
+                {aboutHero.title}{" "}
+                <span className="text-[#ffab00] block">{aboutHero.highlight}</span>
+              </h1>
+
+              <p className="max-w-xl text-base leading-7 text-blue-100/90 md:text-lg">
+                {aboutHero.description}
+              </p>
+
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#ffab00] px-7 py-3.5 text-sm font-black text-[#091e42] shadow-xl shadow-amber-400/20 transition hover:bg-[#ffc400] hover:shadow-amber-400/35"
+                >
+                  Contact Sales <ChevronRight size={16} />
+                </Link>
+                <Link
+                  to="/solutions"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-6 py-3.5 text-sm font-bold text-white transition hover:bg-white/20"
+                >
+                  Explore Platform
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Column: Hero Showcase Visual (platform-chart.svg) */}
+            <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
+              <div className="relative overflow-hidden rounded-3xl border border-white/20 bg-white p-5 sm:p-7 shadow-2xl transition duration-500 hover:shadow-blue-500/20">
+                <img
+                  src={aboutHero.image}
+                  width="600"
+                  height="450"
+                  alt={aboutHero.imageAlt}
+                  className="w-full h-auto object-contain transition duration-500 hover:scale-[1.02]"
+                  fetchPriority="high"
+                />
+              </div>
+
+              {/* Floating Badge Overlays */}
+              <div className="absolute -top-6 -left-4 sm:-left-8 w-44 sm:w-56 drop-shadow-2xl animate-float">
+                <img
+                  src={iiotBannerOv1}
+                  width="234"
+                  alt="Software Collection Analytics"
+                  className="w-full h-auto"
+                />
+              </div>
+
+              <div className="absolute -bottom-6 -right-4 sm:-right-6 w-40 sm:w-52 drop-shadow-2xl animate-float delay-200">
+                <img
+                  src={iiotBannerOv2}
+                  width="204"
+                  alt="Productivity & Velocity"
+                  className="w-full h-auto"
+                />
+              </div>
+            </div>
+          </Container>
+
+          {/* Bottom 4 Quick Product Cards Strip */}
+          <Container className="mt-14 pt-10 border-t border-white/10">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {heroProductsStrip.map((prod) => {
+                const Icon = prod.icon || Cpu;
+                return (
+                  <div
+                    key={prod.title}
+                    className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur transition hover:border-amber-400/50 hover:bg-white/10"
+                  >
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-amber-400/20 text-amber-400 p-2 shadow-xs group-hover:scale-110 transition">
+                      <Icon size={24} />
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-black text-white">{prod.title}</h4>
+                      <p className="text-xs text-blue-200/80 leading-snug">{prod.desc}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </Container>
+        </div>
+
+        {/* ══════════════════════════════════════
+            § 1.2 — BOTTOM CONTAINER: INTERACTIVE PLATFORM TABS
+        ══════════════════════════════════════ */}
+        <div className="bg-slate-50 py-16 text-slate-900 border-b border-slate-200">
+          <Container>
+            <div className="mb-10 text-center">
+              <span className="inline-block rounded-full bg-blue-100 px-4 py-1 text-[11px] font-bold uppercase tracking-widest text-blue-800">
+                The Platform Architecture
+              </span>
+              <h2 className="mt-3 text-3xl font-black text-blue-950 sm:text-4xl">
+                The AI-Native SDLC &amp; IIoT Platform for Every Team
+              </h2>
+              <p className="mt-2 text-slate-600 max-w-2xl mx-auto text-sm sm:text-base">
+                Measure and improve your developer productivity, software quality, shop floor automation, and team velocity.
+              </p>
+            </div>
+
+            {/* Interactive Tab Navigation Pills */}
+            <div className="flex flex-wrap justify-center gap-2 mb-10">
+              {platformTabsData.map((tab) => {
+                const TabIcon = tab.icon || Cpu;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActivePlatformTab(tab.id)}
+                    className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-extrabold transition-all duration-200 ${
+                      activePlatformTab === tab.id
+                        ? "bg-blue-700 text-white shadow-md ring-2 ring-blue-600"
+                        : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-100"
+                    }`}
+                  >
+                    <TabIcon size={15} />
+                    <span>{tab.name}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Active Tab Showcase Panel */}
+            {currentTabObj && (
+              <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-xl lg:p-12">
+                <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-center">
+                  <div>
+                    <span className="inline-block rounded-full bg-blue-100 border border-blue-200 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-blue-800 mb-3">
+                      {currentTabObj.name}
+                    </span>
+                    <h3 className="text-2xl font-black text-blue-950 sm:text-3xl leading-snug">
+                      {currentTabObj.title}
+                    </h3>
+                    <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed">
+                      {currentTabObj.desc}
+                    </p>
+
+                    <div className="mt-8">
+                      <Link
+                        to={currentTabObj.link}
+                        className="inline-flex items-center gap-2 text-sm font-black text-blue-700 hover:text-blue-900 transition"
+                      >
+                        <span>Learn more</span>
+                        <ArrowRight size={16} />
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 p-2 shadow-lg">
+                    <img
+                      src={currentTabObj.image}
+                      alt={currentTabObj.title}
+                      className="w-full h-auto rounded-xl object-cover shadow-sm"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+          </Container>
+        </div>
+      </section>
 
       {/* ══════════════════════════════════════
           § 2 — WHO WE ARE & FACTORY ECOSYSTEM

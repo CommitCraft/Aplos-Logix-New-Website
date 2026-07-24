@@ -77,7 +77,7 @@ export default function Home() {
           § 1 — HERO
       ══════════════════════════════════════ */}
       <section className="relative overflow-hidden bg-[#04264c] aplos-grid">
-        <Container className="relative z-10 grid min-h-[92vh] gap-10 py-20 lg:grid-cols-[55%_45%] lg:items-center">
+        <Container className="relative z-10 grid min-h-[92vh] gap-10 py-12 lg:grid-cols-[55%_45%] lg:items-center">
 
           {/* LEFT — headline + CTA */}
           <div className="flex flex-col gap-6 animate-fade-in-left">
