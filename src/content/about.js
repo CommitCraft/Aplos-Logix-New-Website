@@ -13,6 +13,12 @@ import {
   Sparkles,
   Workflow,
   Zap,
+  Target,
+  Eye,
+  CheckCircle2,
+  Award,
+  Factory,
+  BarChart3
 } from "lucide-react";
 
 import panelImage from "../assets/image/big_panel.png";
@@ -23,24 +29,19 @@ import panelImage from "../assets/image/big_panel.png";
 
 export const aboutHero = {
   eyebrow: "About Aplos Logix Pvt. Ltd.",
-
-  title: "Transforming Industries with",
-
-  highlight: "Smart Technology",
-
+  title: "Transforming Manufacturing with",
+  highlight: "Connected Intelligence",
   description:
-    "We design practical IIoT, automation and industrial intelligence solutions that simplify complex operations, connect shop-floor systems and help manufacturers improve quality, visibility and operational performance.",
-
+    "We design enterprise-grade IIoT, MES, OEE, and DigiQA solutions that simplify complex shop floor operations, connect legacy and modern PLCs, and empower manufacturers with real-time actionable visibility.",
   image: panelImage,
-  imageAlt: "Aplos Logix Pvt. Ltd. Industrial Automation & Industrial Intelligence Platform",
+  imageAlt: "Aplos Logix Pvt. Ltd. Industrial Automation & IIoT Platform",
   points: [
-    "Digitize quality and operational processes",
-    "Provide real-time production and performance visibility",
-    "Build scalable and reliable industrial platforms",
-    "Reduce manual dependency and operational complexity",
-    "Enable data-driven manufacturing decisions",
+    "100% Paperless DigiQA & Quality Gate Enforcements",
+    "Real-time OEE, Downtime Pareto & Rejection Root-Cause Tracking",
+    "Multi-protocol Edge Gateway Integration (OPC-UA, Modbus, MQTT, Profinet)",
+    "Parent-Child Assembly Genealogy & Serial Barcode Label Printing",
+    "Predictive Energy Management (EMS) & Peak Load Optimization"
   ],
-  
 };
 
 /* =========================================================
@@ -49,72 +50,67 @@ export const aboutHero = {
 
 export const aboutIntro = {
   eyebrow: "Who We Are",
-
-  title: "Making Industrial Technology",
-
+  title: "Making Industrial Automation",
   highlight: "Powerful Yet Simple",
-
   paragraphs: [
-    "At Aplos Logix Pvt. Ltd., we believe that the most powerful technology is technology that works seamlessly in the background. Our solutions connect machines, testing stations, operators and production systems without adding unnecessary complexity to daily operations.",
-
-    "We build IIoT, DigiQA, EMS, QMS, traceability and production intelligence platforms that help manufacturers gain real-time visibility, improve product quality, reduce manual dependency and make faster operational decisions.",
-
-    "We are not just a software company. We combine industrial automation, hardware integration, edge computing, data engineering and application development to build complete manufacturing ecosystems.",
+    "At Aplos Logix Pvt. Ltd., we believe that the most transformative industrial technology is technology that operates transparently and reliably in the background.",
+    "We build non-intrusive IIoT, DigiQA, EMS, QMS, traceability, and production intelligence platforms that give plant leaders 24/7 visibility into Availability, Performance, and Quality.",
+    "We bridge hardware engineering with cloud analytics — combining PLC integration, edge computing, high-frequency sampling, and modern web applications into unified smart factory ecosystems."
   ],
-
   coreValues: {
-    heading: "Our Core Values",
-
-    description:
-      "Our solutions are guided by four principles that help us build practical, reliable and scalable technology for modern manufacturing environments.",
-
+    heading: "Our Core Principles",
+    description: "Built upon four foundational pillars engineered specifically for Indian and global manufacturing environments.",
     items: [
       {
+        icon: Lightbulb,
         title: "Innovation First",
-        description:
-          "Cutting-edge technology that drives real transformation.",
+        description: "Cutting-edge edge gateways and IIoT microservices driving real operational transformation."
       },
       {
+        icon: LockKeyhole,
         title: "Security by Design",
-        description:
-          "Enterprise-grade security built into every solution.",
+        description: "Local LAN isolation, SSL encryption, role-based access, and audit trail security."
       },
       {
-        title: "Lightning Fast",
-        description:
-          "Optimized performance for mission-critical operations.",
+        icon: Zap,
+        title: "Lightning Fast Data Stream",
+        description: "1 KHz high-frequency sensor sampling and sub-second ANDON notification alerts."
       },
       {
-        title: "Scale Ready",
-        description:
-          "Solutions that grow with your business needs.",
-      },
-    ],
-  },
+        icon: Scale,
+        title: "Enterprise Scalable",
+        description: "Seamlessly scale from a single assembly station to multi-plant enterprise networks."
+      }
+    ]
+  }
 };
 
 /* =========================================================
-   MISSION
+   MISSION & VISION SECTIONS
 ========================================================= */
 
 export const missionSection = {
-  eyebrow: "Our Mission",
-
-  title: "Transform Industrial Operations Through",
-
-  highlight: "Connected Intelligence",
-
+  eyebrow: "Our Core Mission",
+  title: "Transforming Shop Floors Through",
+  highlight: "Real-Time IIoT Automation",
   description:
-    "Our mission is simple: transform industrial operations through intelligent automation, real-time insights and practical digital systems that improve productivity, quality and sustainability.",
-
+    "Our mission is to eliminate paper logbooks, hidden machine downtime, and manual quality bottlenecks by connecting every asset, station, and operator to an intelligent data layer.",
   points: [
-    "Connect machines, test equipment and production systems",
-    "Digitize quality and operational processes",
-    "Provide real-time production and performance visibility",
-    "Build scalable and reliable industrial platforms",
-    "Reduce manual dependency and operational complexity",
-    "Enable data-driven manufacturing decisions",
-  ],
+    "Plug-and-play PLC, SCADA & sensor gateway integration",
+    "Automate electrical safety, performance & EOL test panels",
+    "Deliver instant WhatsApp & ANDON siren escalation alerts",
+    "Enforce 100% component and serial number traceability",
+    "Eliminate manual Excel reporting overhead and human entry error",
+    "Enable data-driven, ROI-focused manufacturing decisions"
+  ]
+};
+
+export const visionSection = {
+  eyebrow: "Our Strategic Vision",
+  title: "Empowering 1,000+ Factories with",
+  highlight: "Industry 4.0 Ecosystems",
+  description:
+    "By 2030, Aplos Logix aims to be the undisputed leader in enterprise Industrial IoT and shop floor MES solutions across Asia and global manufacturing corridors."
 };
 
 /* =========================================================
@@ -123,59 +119,66 @@ export const missionSection = {
 
 export const philosophy = {
   quote:
-    "We're not just another technology company. We're building connected industrial ecosystems that make complex manufacturing processes beautifully simple.",
-
-  author: "Aplos Logix Pvt. Ltd.",
+    "We don't just write software — we build connected industrial ecosystems that make complex manufacturing operations beautifully simple and completely transparent.",
+  author: "Aplos Logix Leadership Team"
 };
 
 /* =========================================================
-   CORE VALUES
+   CORE VALUES LIST
 ========================================================= */
 
 export const coreValues = [
   {
     icon: Lightbulb,
     title: "Innovation First",
-    description:
-      "We use modern industrial technologies to solve real manufacturing challenges and create measurable operational improvement.",
+    description: "Developing custom edge adapters and AI microservices that convert raw PLC registers into actionable shop floor metrics."
   },
   {
     icon: ShieldCheck,
     title: "Security by Design",
-    description:
-      "Security, controlled access and reliable data architecture are considered from the beginning of every implementation.",
+    description: "Air-gapped local LAN options, encrypted MQTT telemetry, and enterprise role permissions protecting your IP."
   },
   {
     icon: Zap,
-    title: "Lightning Fast",
-    description:
-      "Our systems are designed for responsive dashboards, real-time data processing and mission-critical industrial operations.",
+    title: "Real-Time Speed",
+    description: "Sub-second ANDON notifications, live TV gauge displays, and instant serial number test retrieval."
   },
   {
     icon: Scale,
-    title: "Scale Ready",
-    description:
-      "From one machine to multiple production lines and plants, our architecture is designed to grow with the organization.",
-  },
+    title: "Infinite Scale",
+    description: "Modular microservices architecture growing effortlessly from one station to multi-plant networks."
+  }
 ];
 
 /* =========================================================
-   BUSINESS IMPACT STATS
+   BUSINESS IMPACT STATS (Animated Counter Compatible)
 ========================================================= */
 
 export const impactStats = [
   {
-    value: "500+",
-    label: "Happy Clients",
+    numericEnd: 200,
+    suffix: "+",
+    label: "Factory Deployments",
+    sublabel: "Across Discrete & Process Mfg"
   },
   {
-    value: "98%",
-    label: "Success Rate",
+    numericEnd: 50,
+    suffix: "K+",
+    label: "Connected Sensors & PLCs",
+    sublabel: "Siemens, Fanuc, ABB & Omron"
   },
   {
-    value: "60%",
-    label: "Efficiency Boost",
+    numericEnd: 99.8,
+    suffix: "%",
+    label: "System Uptime SLA",
+    sublabel: "24/7 Live Monitoring"
   },
+  {
+    numericEnd: 35,
+    suffix: "%",
+    label: "Average Downtime Reduction",
+    sublabel: "Within 90 Days of Launch"
+  }
 ];
 
 /* =========================================================
@@ -183,70 +186,34 @@ export const impactStats = [
 ========================================================= */
 
 export const iiotExcellence = {
-  eyebrow: "IIoT Excellence",
-
-  title: "From Industrial Data to",
-
-  highlight: "Actionable Intelligence",
-
+  eyebrow: "The IIoT Continuum",
+  title: "From Raw Field Signals to",
+  highlight: "Enterprise ROI",
   description:
-    "Our IIoT ecosystem connects machines, test systems, utilities and production processes to create a unified flow of trusted data, real-time visibility and actionable insights across quality, production, energy and management operations.",
-
+    "Our unified IIoT platform spans field connectivity, edge compute analytics, automated ANDON alerts, and enterprise ERP integration.",
   stages: [
     {
       icon: Database,
       number: "01",
-      title: "Connect & Capture",
-
-      description:
-        "Collect reliable production, testing, energy, quality and machine data directly from industrial equipment and connected systems.",
-
-      items: [
-        "PLC Data",
-        "Machine Signals",
-        "Test Panels",
-        "Energy Meters",
-        "QR & Barcode Scanners",
-        "Industrial Sensors",
-      ],
+      title: "Connect & Ingest",
+      description: "Non-intrusive OPC-UA, Modbus & RS485 edge connectivity capturing high-frequency cycle times, voltages & PMC data.",
+      items: ["PLC/SCADA Adapters", "1 KHz Sensor Sampling", "Multi-Brand Hardware Support"]
     },
-
     {
-      icon: Network,
+      icon: BrainCircuit,
       number: "02",
-      title: "Transport & Integrate",
-
-      description:
-        "Securely move and integrate industrial data across machines, edge devices, plant networks and centralized applications.",
-
-      items: [
-        "OPC UA",
-        "Modbus",
-        "MQTT",
-        "REST APIs",
-        "TCP/IP",
-        "Serial Communication",
-      ],
+      title: "Process & Analyze",
+      description: "Edge and cloud algorithms calculating real-time Availability, Performance, Quality, Downtime Pareto & EMS demand.",
+      items: ["Live OEE Engine", "Defect Pareto Root-Cause", "Energy & CO2 Tracking"]
     },
-
     {
-      icon: Cpu,
+      icon: Rocket,
       number: "03",
-      title: "Process & Act",
-
-      description:
-        "Transform raw industrial data into validated records, dashboards, reports, alerts and workflows that support faster operational decisions.",
-
-      items: [
-        "DigiQA",
-        "EMS",
-        "QMS",
-        "OEE Dashboard",
-        "ANDON",
-        "Traceability",
-      ],
-    },
-  ],
+      title: "Automate & Scale",
+      description: "Instant WhatsApp ANDON alerts, automated rating label printing, mobile work orders, and bi-directional SAP REST APIs.",
+      items: ["WhatsApp/SMS Alerts", "Rating Label Printing", "SAP/ERP Integration"]
+    }
+  ]
 };
 
 /* =========================================================
@@ -254,32 +221,18 @@ export const iiotExcellence = {
 ========================================================= */
 
 export const vision2030 = {
-  eyebrow: "Vision 2030",
-
-  title: "Building the Future of",
-
-  highlight: "Connected Manufacturing",
-
+  eyebrow: "Strategic Vision 2030",
+  title: "Pioneering the Next Era of",
+  highlight: "Zero-Defect Manufacturing",
   description:
-    "Our vision is to become a trusted global industrial technology partner by creating connected manufacturing environments where machines, people, processes and intelligent systems work together seamlessly.",
-
+    "Our roadmap focuses on AI predictive maintenance, autonomous ANDON routing, and carbon footprint reduction for green smart factories.",
   statement:
-    "To create a future where every factory, process and operation can achieve greater harmony between human expertise, connected systems and intelligent automation.",
-
+    "By bridging legacy plant hardware with cloud AI analytics, Aplos Logix empowers manufacturers to achieve world-class OEE and 100% serial product quality.",
   metrics: [
-  {
-    value: "100%",
-    label: "Connected Factory Visibility",
-  },
-  {
-    value: "24/7",
-    label: "Real-Time Operational Intelligence",
-  },
-  {
-    value: "AI-Ready",
-    label: "Intelligent Manufacturing Architecture",
-  },
-],
+    { value: "100%", label: "Serial Traceability" },
+    { value: "<50ms", label: "Edge Signal Latency" },
+    { value: "35%", label: "Downtime Reduction" }
+  ]
 };
 
 /* =========================================================
@@ -287,41 +240,33 @@ export const vision2030 = {
 ========================================================= */
 
 export const technologyExcellence = {
-  eyebrow: "Technology Excellence",
-
-  title: "Technology Built for",
-
-  highlight: "Industrial Reality",
-
+  eyebrow: "Our Tech Architecture",
+  title: "Engineered for High-Frequency",
+  highlight: "Industrial Reliability",
   description:
-    "Our technology architecture combines industrial connectivity, edge computing, cloud-ready systems, secure applications and intelligent analytics.",
-
+    "Built on resilient edge-computing frameworks, secure encrypted data buses, and modular microservices.",
   items: [
     {
-      icon: BrainCircuit,
-      title: "AI & Machine Learning",
-      description:
-        "Build intelligent analytics, anomaly detection and decision-support capabilities on top of structured industrial data.",
+      icon: Cpu,
+      title: "Edge Gateway Computing",
+      description: "Non-intrusive edge nodes processing sensor data locally with store-and-forward memory."
     },
     {
-      icon: Workflow,
-      title: "IIoT Integration",
-      description:
-        "Connect PLCs, machines, testers, sensors, energy meters, scanners and existing enterprise applications.",
+      icon: Network,
+      title: "Multi-Protocol Hardware Bus",
+      description: "Native support for OPC-UA, Modbus TCP/RTU, Profinet, Profibus, EtherCAT & CANbus."
     },
     {
       icon: Cloud,
-      title: "Cloud & Hybrid Infrastructure",
-      description:
-        "Deploy solutions on-premise, in hybrid environments or through secure cloud-connected architectures.",
+      title: "Real-Time Cloud & LAN Sync",
+      description: "Sub-second streaming to local plant servers or secure cloud dashboards over TLS 1.3."
     },
     {
-      icon: LockKeyhole,
-      title: "Security & Compliance",
-      description:
-        "Role-based access, controlled connectivity, system isolation and secure industrial data management.",
-    },
-  ],
+      icon: Workflow,
+      title: "ERP & MES REST APIs",
+      description: "Bi-directional REST API connectors for SAP, Oracle, Tally, and custom shop floor systems."
+    }
+  ]
 };
 
 /* =========================================================
@@ -329,12 +274,7 @@ export const technologyExcellence = {
 ========================================================= */
 
 export const futureSection = {
-  eyebrow: "Building the Future",
-
-  title: "Manufacturing Intelligence That",
-
-  highlight: "Works on the Factory Floor",
-
+  title: "Ready to Build Your Smart Connected Factory?",
   description:
-    "From machine connectivity and safety test panels to quality management, production dashboards, OEE, downtime analysis, traceability and daily automated reports—Aplos Logix creates complete digital manufacturing ecosystems.",
+    "Partner with Aplos Logix to boost your OEE, eliminate manual paperwork, and experience complete shop floor visibility."
 };
