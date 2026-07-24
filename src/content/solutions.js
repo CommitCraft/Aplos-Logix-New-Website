@@ -25,7 +25,14 @@ import {
   CheckCircle2,
   HelpCircle,
   TrendingUp,
-  Layers
+  Layers,
+  Wrench,
+  TrendingDown,
+  Sparkles,
+  CalendarCheck,
+  AlertTriangle,
+  Flame,
+  Droplets
 } from "lucide-react";
 
 export const solutionsHero = {
@@ -110,32 +117,144 @@ export const pipelineSteps = [
 export const manufacturingTypes = {
   discrete: {
     title: "Discrete Manufacturing",
-    desc: "High-speed assembly lines requiring unit-level serial traceability, test panel integration, and automated label printing.",
+    desc: "High-speed assembly lines requiring unit-level serial traceability, safety/performance test panel integration, and automated label printing.",
     sectors: [
-      "White Goods & Appliances",
-      "Automobile & Auto Components",
-      "Battery Packs & EV Components",
-      "Electronics & PCB Assembly",
-      "Medical Devices & Equipment",
-      "Electrical Switchgear & Motors",
-      "HVAC & Compressors",
-      "Power Tools & Lighting"
+      "Washing Machines & Dryers",
+      "Refrigerators & Deep Freezers",
+      "Air Conditioners & HVAC Systems",
+      "Microwaves & Kitchen Appliances",
+      "Water Purifiers & Small Appliances",
+      "Televisions & Consumer Electronics",
+      "Electric Motors, Fans & Pumps",
+      "Automobiles & EV Battery Packs"
     ]
   },
   process: {
-    title: "Process Manufacturing",
-    desc: "Continuous & batch operations requiring precise energy monitoring, pressure/temperature logging, and recipe compliance.",
-    sectors: [
-      "Chemicals & Specialty Coatings",
-      "Food, Beverage & Dairy",
-      "Pharmaceuticals & Cleanrooms",
-      "Metals, Steel & Extrusions",
-      "Textiles & Synthetic Fibers",
-      "Plastics & Injection Molding",
-      "Glass & Ceramic Manufacturing",
-      "Adhesives & Industrial Resins"
+    title: "Industrial & Process Manufacturing",
+    desc: "Transform manufacturing operations with connected machines, real-time production visibility, intelligent alerts, energy monitoring, predictive maintenance, and scalable edge-to-cloud automation.",
+    applications: [
+      "Plastic Injection Molding",
+      "CNC Machine Monitoring",
+      "Industrial Press Automation",
+      "HVAC & Utility Monitoring",
+      "Battery Production Monitoring",
+      "Temperature & Energy Management",
+      "Real-Time Production Tracking",
+      "Predictive Maintenance"
     ]
   }
+};
+
+export const supportedBrands = [
+  "Siemens", "Allen Bradley", "Mitsubishi Electric", "Schneider Electric",
+  "ABB", "Beckhoff", "Fanuc", "Omron", "Hitachi", "Delta", "Makino", "Mazak"
+];
+
+export const supportedProtocols = [
+  "OPC-UA", "Modbus TCP/RTU", "MQTT", "Profinet", "Profibus",
+  "EtherCAT", "BACnet", "CANbus", "EtherNet/IP", "CC-Link", "SNMP", "CoAP"
+];
+
+export const holisticModules = [
+  {
+    id: "machinemonitoring",
+    tag: "Machine Monitoring",
+    title: "Detailed View of High-Value Assets",
+    desc: "Monitor CNCs, robotic arms, Swiss lathes, and precision equipment in real time to maximize operational efficiency.",
+    icon: Gauge,
+    points: [
+      { name: "Condition Monitoring", text: "Access real-time health and vibration/heat metrics of assets." },
+      { name: "Machine Performance", text: "Analyze speed, output, energy draw, and PMC indicators." },
+      { name: "Uptime vs. Downtime", text: "Track operational intervals to minimize unplanned stops." },
+      { name: "Machine Utilization", text: "Compare actual runtime against scheduled available shift hours." }
+    ]
+  },
+  {
+    id: "productionline",
+    tag: "Production Line Monitoring",
+    title: "Reduce Downtime & Stoppages for Max Efficiency",
+    desc: "Proactively monitor multi-station assembly lines for enhanced throughput and zero-defect quality control.",
+    icon: Factory,
+    points: [
+      { name: "Line Stoppages", text: "Identify exact root cause, duration, and frequency of line stops." },
+      { name: "Cycle Time Analysis", text: "Track station-wise cycle time to eliminate bottlenecks." },
+      { name: "Planned vs. Actual Yield", text: "Compare projected output against real-time finished units." },
+      { name: "Operator Efficiency", text: "Monitor task completion rates and operator station activity." }
+    ]
+  },
+  {
+    id: "oee",
+    tag: "Overall Equipment Effectiveness",
+    title: "Evaluate OEE for World-Class Productivity",
+    desc: "Automatically calculate the 3 golden pillars of manufacturing: Availability, Performance, and Quality.",
+    icon: BarChart3,
+    points: [
+      { name: "Equipment Effectiveness", text: "Instant live OEE dashboard across machines, shifts, and plants." },
+      { name: "Production Bottlenecks", text: "Highlight slow-running stations and micro-stoppages." },
+      { name: "OEE Benchmarking", text: "Compare OEE against global Industry 4.0 standards." },
+      { name: "Availability Tracking", text: "Schedule preventative maintenance to prevent breakdowns." }
+    ]
+  },
+  {
+    id: "shifts",
+    tag: "Shifts & Job Allocation",
+    title: "Track Shifts, Jobs, and Resource Utilization",
+    desc: "Digital shift management and automated work order job card tracking for personnel and equipment.",
+    icon: CalendarCheck,
+    points: [
+      { name: "Real-Time Shift Data", text: "Continuous analysis and shift report generation." },
+      { name: "Resource Allocation", text: "Distribute tasks across operators and workstations." },
+      { name: "Digital Job Cards", text: "Paperless work orders linked directly to serial numbers." },
+      { name: "Idle Time Analysis", text: "Compare productive work time vs. line wait time." }
+    ]
+  },
+  {
+    id: "maintenance",
+    tag: "Maintenance & SLAs",
+    title: "Predictive Maintenance & Mobile Work Orders",
+    desc: "Automate maintenance schedules, detect early signs of failure, and resolve SLAs faster.",
+    icon: Wrench,
+    points: [
+      { name: "Predictive Maintenance", text: "AI-driven anomaly detection before catastrophic breakdown." },
+      { name: "Mobile Work Orders", text: "Digital work instructions pushed to technician mobile apps." },
+      { name: "Scheduled PM Log", text: "Track maintenance history and component replacement cycles." },
+      { name: "Asset Repository", text: "Complete lifecycle management from installation to decommission." }
+    ]
+  },
+  {
+    id: "quality",
+    tag: "Quality Analysis & DigiQA",
+    title: "Meet Quality & ISO Standards with Precision",
+    desc: "Digital quality checkpoints, safety test panel validation, and 100% serial number traceability.",
+    icon: ShieldCheck,
+    points: [
+      { name: "100% Traceability", text: "Track product serial number history and test parameters." },
+      { name: "Defect Analysis", text: "Classify rejections into Pareto charts for quick CAPA action." },
+      { name: "Regulatory Compliance", text: "Comply with ISO, FDA, and OEM quality audit standards." },
+      { name: "Safety Panel Testing", text: "Validate insulation, HV, and circuit safety before dispatch." }
+    ]
+  },
+  {
+    id: "energy",
+    tag: "Energy & Sustainability (EMS)",
+    title: "Optimize Energy & Reduce Carbon Footprint",
+    desc: "Monitor power, kWh, power factor, and carbon emissions across compressors, chillers, and machine lines.",
+    icon: Zap,
+    points: [
+      { name: "Energy Patterns", text: "Identify peak demand spikes and non-productive energy waste." },
+      { name: "Carbon Emissions (CO2)", text: "Track greenhouse gas emissions for ESG compliance." },
+      { name: "Utilities Monitoring", text: "Monitor power, water, gas flow, and air pressure in real time." },
+      { name: "AI Demand Forecasting", text: "Predict shift energy consumption using machine learning models." }
+    ]
+  }
+];
+
+export const operationalOutcomes = {
+  increase: ["Asset Lifecycle", "Machine Efficiency", "Production Revenue"],
+  improve: ["Operator Productivity", "Machine Uptime", "Product Quality Yield"],
+  optimize: ["Machine Utilization", "Maintenance Cycles", "Shift Output"],
+  transform: ["Manufacturing Operations", "Workforce Efficiency", "Digital Factory Culture"],
+  reduce: ["Unplanned Downtime", "Energy & Waste Costs", "Paperwork & Manual Logs"]
 };
 
 export const solutionCards = [
