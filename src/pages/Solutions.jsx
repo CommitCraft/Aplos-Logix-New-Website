@@ -30,8 +30,10 @@ import {
   solutionsHero,
   whatWhyHowData,
   pipelineSteps,
+  architectureStages,
   manufacturingTypes,
   solutionCards,
+  essentialCapabilities,
   powerfulModules,
   productionTests,
   solutionBenefits,
@@ -64,6 +66,22 @@ import modEnergy from "../assets/image/mod_energy.webp";
 import modUtilities from "../assets/image/mod_utilities.webp";
 import modSafety from "../assets/image/mod_safety.webp";
 
+import procPhoto1 from "../assets/image/proc_photo_1.svg";
+import procPhoto2 from "../assets/image/proc_photo_2.svg";
+import procPhoto3 from "../assets/image/proc_photo_3.svg";
+import procPhoto4 from "../assets/image/proc_photo_4.svg";
+import procPhoto5 from "../assets/image/proc_photo_5.svg";
+import procPhoto6 from "../assets/image/proc_photo_6.svg";
+
+const PROC_PHOTOS = {
+  procPhoto1,
+  procPhoto2,
+  procPhoto3,
+  procPhoto4,
+  procPhoto5,
+  procPhoto6
+};
+
 const MODULE_IMAGES = {
   modMachine,
   modLine,
@@ -92,9 +110,16 @@ const CARD_THEMES = {
 export default function Solutions() {
   const [activeTab, setActiveTab] = useState("what");
   const [activeModuleId, setActiveModuleId] = useState("machinemonitoring");
+  const [activeStageId, setActiveStageId] = useState("collect");
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   const currentFaq = whatWhyHowData[activeTab];
   const activeModule = holisticModules.find((m) => m.id === activeModuleId) || holisticModules[0];
+  const activeStage = architectureStages.find((s) => s.id === activeStageId) || architectureStages[0];
+
+  const filteredCards = selectedCategory === "all"
+    ? solutionCards
+    : solutionCards.filter((c) => c.category === selectedCategory);
 
   return (
     <main className="overflow-hidden bg-slate-50">
@@ -284,48 +309,152 @@ export default function Solutions() {
       </section>
 
       {/* ══════════════════════════════════════
-          § 3 — CONNECT -> COLLECT -> ANALYZE -> ACT PIPELINE
+          § 3 — THE ARCHITECTURE (Interactive 4-Stage IIoT Pipeline)
       ══════════════════════════════════════ */}
-      <section className="py-20 bg-slate-900 text-white aplos-grid">
+      <section className="py-20 bg-slate-900 text-white aplos-grid overflow-hidden">
         <Container>
           <div className="mb-14 text-center">
             <span className="inline-block rounded-full border border-orange-400/30 bg-orange-400/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-widest text-orange-400">
-              The Architecture
+              The IIoT Architecture
             </span>
             <h2 className="mt-4 text-3xl font-black sm:text-4xl text-white">
-              From Edge Data to Actionable Insights
+              From Edge Data Signals to Enterprise Action
             </h2>
-            <p className="mt-3 text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
-              A unified 4-layer IIoT framework that converts raw PLC signals into real-time shop floor intelligence.
+            <p className="mt-3 text-slate-300 max-w-2xl mx-auto text-sm sm:text-base">
+              Explore how raw PLC and sensor signals are captured at the edge, transmitted securely, analyzed for OEE, and converted into automated actions.
             </p>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Interactive Stage Selector Bar */}
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 mb-12">
+            {architectureStages.map((stage) => {
+              const Icon = stage.icon;
+              const isActive = activeStageId === stage.id;
+              return (
+                <button
+                  key={stage.id}
+                  onClick={() => setActiveStageId(stage.id)}
+                  className={`flex flex-col items-center gap-2 rounded-2xl p-4 text-center border transition-all duration-300 ${isActive
+                    ? "border-orange-400 bg-gradient-to-b from-orange-500/20 to-white/10 shadow-xl ring-2 ring-orange-400/40"
+                    : "border-white/10 bg-white/5 text-slate-300 hover:bg-white/10 hover:border-white/20"
+                    }`}
+                >
+                  <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${isActive ? "bg-orange-500 text-white" : "bg-white/10 text-orange-400"}`}>
+                    <Icon size={18} />
+                  </div>
+                  <div>
+                    <span className="text-[9px] font-black uppercase tracking-widest text-orange-400 block">{stage.step}</span>
+                    <span className="text-xs font-black text-white">{stage.tag}</span>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Active Stage Detailed Showcase */}
+          {activeStage && (
+            <div className="grid gap-10 rounded-3xl border border-white/15 bg-gradient-to-br from-[#031d3b]/95 via-[#04264c]/90 to-blue-950/95 p-8 backdrop-blur-2xl lg:grid-cols-2 lg:items-center lg:p-12">
+              <div>
+                <div className="flex items-center gap-2.5 mb-3">
+                  <span className="inline-block rounded-full bg-orange-400/20 border border-orange-400/40 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-orange-400">
+                    {activeStage.step} • {activeStage.tag}
+                  </span>
+                </div>
+
+                <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight">
+                  {activeStage.title}
+                </h3>
+                <p className="mt-3 text-sm text-blue-100/90 leading-relaxed font-medium">
+                  {activeStage.subtitle}
+                </p>
+
+                {/* 4 Feature Items */}
+                <div className="mt-8 space-y-3.5">
+                  {activeStage.features.map((feat, i) => (
+                    <div
+                      key={i}
+                      className="flex items-start gap-3.5 rounded-2xl border border-white/10 bg-white/6 p-4 backdrop-blur transition hover:bg-white/12 hover:border-orange-400/30"
+                    >
+                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-orange-400/20 text-orange-400 mt-0.5">
+                        <CheckCircle2 size={16} />
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-bold text-white">
+                          {feat.title}
+                        </h4>
+                        <p className="mt-1 text-xs text-blue-200/80 leading-relaxed">
+                          {feat.desc}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right Technical SVG Diagram Frame with High Visibility Container */}
+              <div className="relative space-y-4">
+                {/* Stage 3 Live Metrics Bar */}
+                {activeStage.id === "analyze" && (
+                  <div className="grid grid-cols-3 gap-2 mb-2 rounded-2xl bg-white/10 p-3 border border-orange-400/30 backdrop-blur">
+                    <div className="text-center">
+                      <p className="text-[9px] font-bold uppercase tracking-wider text-orange-300">Live OEE</p>
+                      <p className="text-base font-black text-white">89.4%</p>
+                    </div>
+                    <div className="text-center border-x border-white/10">
+                      <p className="text-[9px] font-bold uppercase tracking-wider text-emerald-300">Availability</p>
+                      <p className="text-base font-black text-white">94.8%</p>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-[9px] font-bold uppercase tracking-wider text-blue-300">Energy (EMS)</p>
+                      <p className="text-base font-black text-white">142 kWh</p>
+                    </div>
+                  </div>
+                )}
+
+                <div className="relative overflow-hidden rounded-2xl border-2 border-slate-200/90 bg-white p-5 shadow-2xl transition duration-300">
+                  <div className="mb-3 flex items-center justify-between border-b border-slate-100 pb-2">
+                    <span className="text-[10px] font-black uppercase tracking-widest text-slate-800 flex items-center gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-orange-500" />
+                      Industrial IoT &amp; Telemetry Architecture
+                    </span>
+                    <span className="rounded-full bg-emerald-100 border border-emerald-200 px-2.5 py-0.5 text-[9px] font-bold text-emerald-800">
+                      Active High-Frequency Pipeline
+                    </span>
+                  </div>
+
+                  <div className="space-y-4 bg-slate-50/70 p-3 rounded-xl border border-slate-100">
+                    <img
+                      src={PROC_PHOTOS[activeStage.img1] || procPhoto1}
+                      alt="Architecture Technical Process Diagram 1"
+                      className="w-full h-auto rounded-lg filter drop-shadow-sm object-contain"
+                    />
+                    <img
+                      src={PROC_PHOTOS[activeStage.img2] || procPhoto2}
+                      alt="Architecture Technical Process Diagram 2"
+                      className="w-full h-auto rounded-lg filter drop-shadow-sm object-contain"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Bottom 4-Column Summary Flow Bar */}
+          <div className="mt-14 pt-10 border-t border-white/10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {pipelineSteps.map((step) => {
               const Icon = step.icon;
               return (
                 <div
                   key={step.step}
-                  className="group relative flex flex-col rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur transition hover:border-orange-400/50 hover:bg-white/10"
+                  className="flex items-center gap-3.5 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur"
                 >
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-2xl font-black text-orange-400/40 group-hover:text-orange-400 transition">
-                      {step.step}
-                    </span>
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-orange-400">
-                      <Icon size={22} />
-                    </div>
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-500/20 text-orange-400">
+                    <Icon size={18} />
                   </div>
-
-                  <span className="text-[10px] font-black uppercase tracking-widest text-blue-300">
-                    {step.name}
-                  </span>
-                  <h3 className="mt-1 text-lg font-black text-white">
-                    {step.title}
-                  </h3>
-                  <p className="mt-3 text-xs leading-5 text-slate-300 flex-1">
-                    {step.desc}
-                  </p>
+                  <div>
+                    <span className="text-[9px] font-black uppercase tracking-widest text-orange-400">{step.name}</span>
+                    <h4 className="text-xs font-bold text-white truncate">{step.title}</h4>
+                  </div>
                 </div>
               );
             })}
@@ -560,83 +689,46 @@ export default function Solutions() {
       </section>
 
       {/* ══════════════════════════════════════
-          § 6 — BRANDS & PROTOCOLS SUPPORTED MARQUEE
+          § 6 — CORE SOLUTION MODULES GRID & 10 ESSENTIAL CAPABILITIES
       ══════════════════════════════════════ */}
-      <section className="py-16 bg-white border-y border-slate-200">
+      <section id="solutions-grid" className="py-20 bg-gradient-to-b from-slate-50 via-white to-slate-50">
         <Container>
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-            {/* Left: Brands We Support */}
-            <div>
-              <span className="inline-block rounded-full bg-blue-100 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-blue-700">
-                Hardware Interoperability
-              </span>
-              <h3 className="mt-2 text-2xl font-black text-blue-950">
-                Brands &amp; Controllers We Support
-              </h3>
-              <p className="mt-2 text-xs text-slate-500">
-                Plug-and-play integration with major industrial automation equipment and CNC controls.
-              </p>
-
-              <div className="mt-6 flex flex-wrap gap-2">
-                {supportedBrands.map((brand) => (
-                  <span
-                    key={brand}
-                    className="flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-3.5 py-1.5 text-xs font-extrabold text-slate-800 shadow-xs"
-                  >
-                    <Check size={12} className="text-emerald-600" />
-                    {brand}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Right: Protocols We Support */}
-            <div>
-              <span className="inline-block rounded-full bg-orange-100 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-orange-700">
-                Industrial Communications
-              </span>
-              <h3 className="mt-2 text-2xl font-black text-blue-950">
-                Protocols We Support
-              </h3>
-              <p className="mt-2 text-xs text-slate-500">
-                High-frequency data streaming from legacy fieldbuses to modern IoT cloud protocols.
-              </p>
-
-              <div className="mt-6 flex flex-wrap gap-2">
-                {supportedProtocols.map((protocol) => (
-                  <span
-                    key={protocol}
-                    className="flex items-center gap-1.5 rounded-full border border-orange-200 bg-orange-50/60 px-3.5 py-1.5 text-xs font-extrabold text-orange-900 shadow-xs"
-                  >
-                    <Zap size={12} className="text-orange-500" />
-                    {protocol}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* ══════════════════════════════════════
-          § 7 — CORE SOLUTION MODULES GRID
-      ══════════════════════════════════════ */}
-      <section id="solutions-grid" className="py-20 bg-slate-50">
-        <Container>
-          <div className="mb-14 text-center">
+          <div className="mb-12 text-center">
             <span className="inline-block rounded-full bg-blue-100 px-4 py-1.5 text-[11px] font-bold uppercase tracking-widest text-blue-700">
-              Core Solutions
+              Connected Modules
             </span>
             <h2 className="mt-4 text-3xl font-black text-blue-950 sm:text-4xl">
               One Connected Solution Portfolio
             </h2>
-            <p className="mt-3 text-slate-600 max-w-2xl mx-auto">
-              Modular applications that plug directly into your production lines to monitor, automate, and optimize operations.
+            <p className="mt-3 text-slate-600 max-w-2xl mx-auto text-sm sm:text-base">
+              Plug-and-play IIoT software applications that connect directly to physical shop floor machines to automate production, quality, and energy reporting.
             </p>
+
+            {/* Category Filter Pills */}
+            <div className="mt-8 flex flex-wrap justify-center gap-2">
+              {[
+                { id: "all", label: "All Modules (9)" },
+                { id: "oee", label: "OEE & Downtime" },
+                { id: "quality", label: "Quality & DigiQA" },
+                { id: "energy", label: "Energy & Telemetry" }
+              ].map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => setSelectedCategory(cat.id)}
+                  className={`rounded-full px-4 py-2 text-xs font-bold transition-all ${selectedCategory === cat.id
+                    ? "bg-blue-950 text-white shadow-md ring-2 ring-blue-700"
+                    : "border border-slate-200 bg-white text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                    }`}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
           </div>
 
+          {/* Cards Grid */}
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {solutionCards.map((card) => {
+            {filteredCards.map((card) => {
               const Icon = card.icon;
               const theme = CARD_THEMES[card.badge] || {
                 border: "border-slate-200/80 hover:border-blue-400",
@@ -649,33 +741,172 @@ export default function Solutions() {
               return (
                 <div
                   key={card.title}
-                  className={`group relative flex flex-col justify-between overflow-hidden rounded-3xl border-2 ${theme.border} ${theme.bg} p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl`}
+                  className={`group relative flex flex-col justify-between overflow-hidden rounded-3xl border-2 ${theme.border} ${theme.bg} p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl`}
                 >
                   <div>
                     <div className="flex items-center justify-between mb-5">
                       <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${theme.iconBg} shadow-xs transition duration-300 group-hover:scale-105`}>
                         <Icon size={22} />
                       </div>
-                      <span className={`rounded-full border px-3 py-1 text-[10px] font-extrabold uppercase tracking-wide ${theme.badge}`}>
-                        {card.badge}
-                      </span>
+                      <div className="flex flex-col items-end gap-1">
+                        <span className={`rounded-full border px-3 py-1 text-[10px] font-extrabold uppercase tracking-wide ${theme.badge}`}>
+                          {card.badge}
+                        </span>
+                        {card.status && (
+                          <span className="text-[9px] font-bold text-emerald-600 flex items-center gap-1">
+                            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                            {card.status}
+                          </span>
+                        )}
+                      </div>
                     </div>
 
                     <h3 className="text-xl font-black text-blue-950">
                       {card.title}
                     </h3>
-                    <p className="mt-2.5 text-sm text-slate-600 leading-relaxed font-normal">
+                    <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
                       {card.text}
                     </p>
+
+                    {/* 3 Feature Bullets */}
+                    {card.features && (
+                      <div className="mt-5 pt-4 border-t border-slate-100 space-y-2">
+                        {card.features.map((feat, idx) => (
+                          <div key={idx} className="flex items-center gap-2 text-xs font-bold text-slate-700">
+                            <span className="h-1.5 w-1.5 rounded-full bg-orange-500 shrink-0" />
+                            <span>{feat}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
                   <div className={`mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-black ${theme.link}`}>
-                    <span>Explore Module</span>
+                    <span>Explore Module Details</span>
                     <ArrowRight size={14} className="transition group-hover:translate-x-1.5" />
                   </div>
                 </div>
               );
             })}
+          </div>
+
+          {/* 10 Essential Capabilities & Cause & Effect Showcase */}
+          <div className="mt-20 rounded-3xl border border-white/15 bg-gradient-to-br from-[#031d3b] via-[#04264c] to-[#021329] p-7 sm:p-10 text-white shadow-2xl backdrop-blur-2xl">
+            <div className="mb-12 text-center max-w-3xl mx-auto">
+              <span className="inline-block rounded-full border border-orange-400/40 bg-orange-400/10 px-4 py-1.5 text-[11px] font-extrabold uppercase tracking-widest text-orange-400">
+                Determine Cause &amp; Effect
+              </span>
+              <h3 className="mt-3 text-2xl font-black sm:text-4xl text-white leading-tight">
+                Holistic Cause &amp; Effect Intelligence Powered by 10 Essential Capabilities
+              </h3>
+              <p className="mt-3 text-xs sm:text-sm text-blue-100/80 leading-relaxed">
+                Directly connect physical machine signals to root-cause diagnosis, automated ANDON escalation, and zero downtime.
+              </p>
+            </div>
+
+            <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+              {/* Left Column: 10 Essential Capabilities Grid */}
+              <div className="grid gap-3.5 sm:grid-cols-2">
+                {essentialCapabilities.map((cap, i) => {
+                  const Icon = cap.icon || Cpu;
+                  return (
+                    <div
+                      key={cap.name}
+                      className="group/cap flex flex-col justify-between rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur transition duration-300 hover:border-orange-400/50 hover:bg-white/10 hover:shadow-lg"
+                    >
+                      <div>
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-orange-500/20 text-orange-400 group-hover/cap:scale-110 transition">
+                            <Icon size={18} />
+                          </div>
+                          <span className="text-[10px] font-black text-orange-400/60 group-hover/cap:text-orange-400 transition">
+                            0{i + 1}
+                          </span>
+                        </div>
+                        <h4 className="text-sm font-black text-white">{cap.name}</h4>
+                        <p className="mt-1.5 text-[11px] text-blue-200/80 leading-relaxed font-normal">
+                          {cap.desc}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Right Column: Live Cause & Effect Event Simulation Flowchart */}
+              <div className="relative rounded-3xl border border-white/15 bg-[#021329] p-6 shadow-2xl">
+                <div className="mb-5 flex items-center justify-between border-b border-white/10 pb-3">
+                  <span className="text-xs font-black uppercase tracking-wider text-orange-400 flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-orange-400 animate-pulse" />
+                    Live Cause &amp; Effect Simulation
+                  </span>
+                  <span className="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-400/20 px-2.5 py-0.5 rounded-full">
+                    Auto Resolution Loop
+                  </span>
+                </div>
+
+                <div className="space-y-4">
+                  {/* Step 1: CAUSE */}
+                  <div className="rounded-2xl border border-rose-500/40 bg-rose-950/30 p-4 relative">
+                    <span className="text-[9px] font-black uppercase tracking-widest text-rose-400 block mb-1">
+                      1. PHYSICAL MACHINE CAUSE
+                    </span>
+                    <h5 className="text-xs font-bold text-white flex items-center justify-between">
+                      <span>Machine #04 Motor Vibration Peak</span>
+                      <span className="text-rose-400 font-mono text-[10px]">&gt;85°C Temp Spike</span>
+                    </h5>
+                    <p className="mt-1 text-[11px] text-slate-300">
+                      1 KHz sensor streams abnormal vibration harmonics directly to edge node.
+                    </p>
+                  </div>
+
+                  {/* Flow Arrow */}
+                  <div className="flex justify-center -my-2">
+                    <div className="h-6 w-0.5 bg-gradient-to-b from-rose-500 to-amber-500" />
+                  </div>
+
+                  {/* Step 2: DIAGNOSIS */}
+                  <div className="rounded-2xl border border-amber-500/40 bg-amber-950/30 p-4">
+                    <span className="text-[9px] font-black uppercase tracking-widest text-amber-400 block mb-1">
+                      2. AUTOMATED EDGE DIAGNOSIS
+                    </span>
+                    <h5 className="text-xs font-bold text-white flex items-center justify-between">
+                      <span>Pareto Root-Cause Classification</span>
+                      <span className="text-amber-400 font-mono text-[10px]">Bearing Wear (Cat #2)</span>
+                    </h5>
+                    <p className="mt-1 text-[11px] text-slate-300">
+                      Edge AI classifies downtime stop reason &amp; computes remaining lifecycle hours.
+                    </p>
+                  </div>
+
+                  {/* Flow Arrow */}
+                  <div className="flex justify-center -my-2">
+                    <div className="h-6 w-0.5 bg-gradient-to-b from-amber-500 to-emerald-500" />
+                  </div>
+
+                  {/* Step 3: EFFECT & ACTION */}
+                  <div className="rounded-2xl border border-emerald-500/40 bg-emerald-950/30 p-4">
+                    <span className="text-[9px] font-black uppercase tracking-widest text-emerald-400 block mb-1">
+                      3. AUTOMATED EFFECT &amp; ACTION
+                    </span>
+                    <ul className="space-y-2 mt-2 text-[11px] text-slate-200">
+                      <li className="flex items-center gap-2">
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0" />
+                        <span>Instant WhatsApp &amp; ANDON Siren Callout to Maintenance SLA Lead</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0" />
+                        <span>PLC Feed Rate auto-throttled to prevent catastrophic motor failure</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0" />
+                        <span>Digital Mobile Work Order generated with 30-min technician SLA timer</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </Container>
       </section>

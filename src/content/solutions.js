@@ -36,7 +36,8 @@ import {
   Radio,
   Boxes as InventoryIcon,
   ShieldAlert,
-  SlidersHorizontal
+  SlidersHorizontal,
+  Smartphone
 } from "lucide-react";
 
 export const solutionsHero = {
@@ -115,6 +116,77 @@ export const pipelineSteps = [
     title: "ANDON Alerts & Automation",
     desc: "Trigger instant WhatsApp/SMS alerts for line stops, print barcode & rating labels automatically, and push live KPIs to shop floor ANDON displays.",
     color: "emerald"
+  }
+];
+
+export const architectureStages = [
+  {
+    id: "collect",
+    step: "STAGE 01",
+    tag: "COLLECT",
+    title: "Data Acquisition & Controller Interfaces",
+    subtitle: "High-Frequency Field Data Ingestion from Legacy & Modern Machines",
+    icon: Database,
+    accent: "blue",
+    img1: "procPhoto1",
+    img2: "procPhoto2",
+    features: [
+      { title: "Universal PLC & SCADA Connectivity", desc: "Connect seamlessly to Siemens, Allen Bradley, Mitsubishi, Fanuc, Omron, and Beckhoff PLCs." },
+      { title: "High-Frequency 1 KHz Sampling", desc: "Capture micro-vibrations, peak current draw, and PMC parameters for AI machine learning." },
+      { title: "Multi-Protocol Hardware Bus", desc: "Support OPC-UA, Modbus TCP/RTU, Profinet, Profibus, EtherCAT, and Ethernet/IP." },
+      { title: "Digital & Analog Sensor Nodes", desc: "Plug-and-play integration for temperature, pressure, flow, vibration, and optical sensors." }
+    ]
+  },
+  {
+    id: "connect",
+    step: "STAGE 02",
+    tag: "CONNECT",
+    title: "Edge Gateway Computing & Cloud Aggregation",
+    subtitle: "Localized Machine Intelligence & Secure Encrypted Telemetry",
+    icon: Cpu,
+    accent: "violet",
+    img1: "procPhoto3",
+    img2: "procPhoto4",
+    features: [
+      { title: "Edge Gateway Computing", desc: "Local processing, data filtering, and zero-latency decision making right at the shop floor." },
+      { title: "Encrypted Cloud Streaming", desc: "Stream metrics via HTTPS/MQTT to local plant servers or secure cloud infrastructure." },
+      { title: "Remote Site Management", desc: "Deploy firmware updates and configuration changes remotely with one click." },
+      { title: "Store-and-Forward Memory", desc: "Local buffer memory ensures zero data loss during temporary network outages." }
+    ]
+  },
+  {
+    id: "analyze",
+    step: "STAGE 03",
+    tag: "ANALYZE & CURATE",
+    title: "Real-Time OEE & Industrial Analytics Engine",
+    subtitle: "Automated OEE Calculation, Machine Telemetry & Energy (EMS) Intelligence",
+    icon: LineChart,
+    accent: "orange",
+    img1: "procPhoto5",
+    img2: "procPhoto6",
+    features: [
+      { title: "Real-Time OEE Loss Engine", desc: "Instantly calculate Availability, Performance, and Quality across machines, lines, and shifts." },
+      { title: "Downtime & Pareto Root Cause", desc: "Automated categorization of machine stop reasons for instant root-cause corrective action (CAPA)." },
+      { title: "Industrial Energy Management (EMS)", desc: "Track kWh power consumption, peak load spikes, power factor, and carbon footprint per unit." },
+      { title: "Serial Quality & Component Traceability", desc: "Link electrical safety, pressure, and dimension test results to product serial numbers." }
+    ]
+  },
+  {
+    id: "act",
+    step: "STAGE 04",
+    tag: "ACT & AUTOMATE",
+    title: "ANDON Alerts, Workflows & ERP Integration",
+    subtitle: "Turn Insights into Instant Automated Actions & ERP Synchronization",
+    icon: Sliders,
+    accent: "emerald",
+    img1: "procPhoto1",
+    img2: "procPhoto4",
+    features: [
+      { title: "Instant ANDON Callouts", desc: "Trigger WhatsApp, SMS, and email alerts for line stops, quality deviations, and maintenance." },
+      { title: "Automated Label Printing", desc: "Print barcode, QR code, MRP, and rating plate labels directly from live test results." },
+      { title: "ERP & MES REST APIs", desc: "Bi-directional integration with SAP, Oracle, Tally, and custom ERP production planning." },
+      { title: "DigiQA Safety Gates", desc: "Prevent non-compliant units from advancing to packing with automated safety interlocks." }
+    ]
   }
 ];
 
@@ -334,57 +406,97 @@ export const solutionCards = [
   {
     icon: ChartNoAxesCombined,
     title: "EMS Dashboard",
-    text: "Track energy consumption, demand and power parameters with real-time trends and alerts.",
-    badge: "Energy"
+    text: "Track energy consumption, peak demand and power parameters with real-time trends and alerts.",
+    badge: "Energy",
+    category: "energy",
+    status: "Active Monitoring",
+    features: ["kWh & Peak Demand Tracking", "Power Factor & Voltage Logging", "CO2 ESG Carbon Reports"]
   },
   {
     icon: ClipboardCheck,
     title: "QMS Suite",
     text: "Quality inspections, checkpoints, audit records, deviations, CAPA support and compliance visibility.",
-    badge: "Quality"
+    badge: "Quality",
+    category: "quality",
+    status: "ISO Compliant",
+    features: ["Digital Quality Checkpoints", "Defect Pareto & CAPA Action", "ISO Audit Trial Logging"]
   },
   {
     icon: Gauge,
     title: "OEE Dashboard",
     text: "Real-time OEE tracking across machines, lines, shifts and plants with drill-down into losses.",
-    badge: "OEE & Losses"
+    badge: "OEE & Losses",
+    category: "oee",
+    status: "Live OEE Engine",
+    features: ["Availability, Performance & Quality", "Real-Time Downtime Capture", "Multi-Plant OEE Benchmarking"]
   },
   {
     icon: TimerReset,
     title: "Downtime Monitoring",
     text: "Capture downtime reasons, durations and recurrence to reduce production losses and improve response.",
-    badge: "Downtime"
+    badge: "Downtime",
+    category: "oee",
+    status: "Auto Classification",
+    features: ["Stop Reason Categorization", "Micro-Stoppage Tracking", "Pareto Downtime Analytics"]
   },
   {
     icon: QrCode,
     title: "Label Printing",
     text: "Print accurate product, rating plate, QR and MRP labels directly from production data.",
-    badge: "Traceability"
+    badge: "Traceability",
+    category: "quality",
+    status: "Auto Print Engine",
+    features: ["QR & Barcode Generation", "Rating Plate & MRP Print", "Zebra / SATO Printer Interfacing"]
   },
   {
     icon: FileSpreadsheet,
     title: "Daily Reports",
     text: "Automated daily reports with production, quality, downtime, rejection and OEE KPIs.",
-    badge: "Reporting"
+    badge: "Reporting",
+    category: "energy",
+    status: "Automated PDF/Excel",
+    features: ["Shift End Report Dispatch", "LAN Excel Data Export", "Management Summary KPI Mail"]
   },
   {
     icon: RadioTower,
     title: "Live Data Monitoring",
     text: "Live machine, tester, sensor and process values streamed into dashboards and alerts.",
-    badge: "Live Streams"
+    badge: "Live Streams",
+    category: "energy",
+    status: "1 KHz Data Stream",
+    features: ["High-Frequency Sensor Logging", "Live Gauge Widgets", "Vibration & Temp Streaming"]
   },
   {
     icon: Siren,
     title: "ANDON Dashboard",
     text: "Real-time issue visibility, callouts, escalation workflows and operator notifications.",
-    badge: "Alerts"
+    badge: "Alerts",
+    category: "oee",
+    status: "WhatsApp/SMS Live",
+    features: ["WhatsApp & SMS Instant Alerts", "Shop Floor ANDON TV Display", "Multi-Tier Escalation Matrix"]
   },
   {
     icon: PanelTop,
     title: "Test Panel Automation",
     text: "Safety, performance and EOL test execution with validation, data capture and traceability.",
-    badge: "Testing"
+    badge: "Testing",
+    category: "quality",
+    status: "EOL Safety Gate",
+    features: ["HV Insulation & Safety Test", "RPM & Runout Validation", "Pass/Fail Serial Pass Gate"]
   },
+];
+
+export const essentialCapabilities = [
+  { id: "conn", icon: Cpu, name: "Connectivity", desc: "OPC-UA, Modbus, MQTT, Profinet PLC edge adapters for legacy & modern machines." },
+  { id: "wf", icon: Workflow, name: "Workflows", desc: "Event-driven rule engine, ANDON escalation matrix & automated task routing." },
+  { id: "alert", icon: Siren, name: "Smart Alerts", desc: "Multi-channel WhatsApp, SMS, email & shop floor physical siren triggers." },
+  { id: "sec", icon: ShieldCheck, name: "Security", desc: "Role-based access, SSL/TLS encryption, LAN local data storage & audit trails." },
+  { id: "daq", icon: Database, name: "Data Acquisition", desc: "1 KHz high-frequency sensor sampling, PLC register logs & PMC data capture." },
+  { id: "vis", icon: Gauge, name: "Visualization", desc: "Real-time ANDON TV displays, dynamic gauge widgets & multi-plant dashboards." },
+  { id: "ana", icon: LineChart, name: "Analytics", desc: "Automated OEE calculations, downtime Pareto loss charts & energy demand forecasts." },
+  { id: "mod", icon: Boxes, name: "Modelling", desc: "Digital twin, model master BOM, test specifications & parent-child serial genealogy." },
+  { id: "int", icon: Network, name: "Integrations", desc: "Bi-directional REST APIs with SAP, Oracle, ERP, MES, and industrial printers." },
+  { id: "mob", icon: Smartphone, name: "Mobile App", desc: "Technician work orders, real-time push alerts & shift report downloads on mobile." }
 ];
 
 export const powerfulModules = [
