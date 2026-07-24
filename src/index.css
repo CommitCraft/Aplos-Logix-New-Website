@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -13,10 +14,13 @@ body { margin: 0; min-width: 320px; min-height: 100vh; background: #fff; }
 button, input, select, textarea { font: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }
 
+/* ──────────────────────────────────────────
+   Grid overlays
+────────────────────────────────────────── */
 .aplos-grid {
   background-image:
-    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
   background-size: 28px 28px;
 }
 
@@ -27,6 +31,91 @@ button, a { -webkit-tap-highlight-color: transparent; }
   background-size: 32px 32px;
 }
 
+/* ──────────────────────────────────────────
+   Keyframe animations
+────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes wordSlideIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes wordSlideOut {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-12px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes pulseRing {
+  0%   { transform: scale(1);   opacity: 0.8; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* ──────────────────────────────────────────
+   Animation utilities
+────────────────────────────────────────── */
+.animate-fade-in-up   { animation: fadeInUp   0.65s ease both; }
+.animate-fade-in-left { animation: fadeInLeft 0.65s ease both; }
+.animate-float        { animation: float      3.5s ease-in-out infinite; }
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* ──────────────────────────────────────────
+   Marquee
+────────────────────────────────────────── */
+.marquee-wrapper { overflow: hidden; }
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 35s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+
+/* ──────────────────────────────────────────
+   Glass card
+────────────────────────────────────────── */
+.glass-card {
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.14);
+}
+
+/* ──────────────────────────────────────────
+   Architecture connector line
+────────────────────────────────────────── */
 .architecture-line::after {
   content: "";
   position: absolute;
@@ -37,6 +126,29 @@ button, a { -webkit-tap-highlight-color: transparent; }
   border-left: 1px dashed rgb(59 130 246 / .55);
 }
 
+/* ──────────────────────────────────────────
+   Word cycling in hero
+────────────────────────────────────────── */
+.hero-word-enter  { animation: wordSlideIn  0.35s ease forwards; }
+.hero-word-exit   { animation: wordSlideOut 0.3s  ease forwards; }
+
+/* ──────────────────────────────────────────
+   Tab underline active indicator
+────────────────────────────────────────── */
+.tab-active-bar {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #1d4ed8;
+  border-radius: 2px;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
 }
