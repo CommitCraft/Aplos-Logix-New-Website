@@ -53,6 +53,30 @@ import overlayConnect from "../assets/image/overlay_connect.svg";
 import overlayCollect from "../assets/image/overlay_collect.svg";
 import overlayCurate from "../assets/image/overlay_curate.svg";
 
+import modMachine from "../assets/image/mod_machine.webp";
+import modLine from "../assets/image/mod_line.webp";
+import modOee from "../assets/image/mod_oee.webp";
+import modShift from "../assets/image/mod_shift.webp";
+import modMaint from "../assets/image/mod_maint.webp";
+import modQuality from "../assets/image/mod_quality.webp";
+import modInventory from "../assets/image/mod_inventory.webp";
+import modEnergy from "../assets/image/mod_energy.webp";
+import modUtilities from "../assets/image/mod_utilities.webp";
+import modSafety from "../assets/image/mod_safety.webp";
+
+const MODULE_IMAGES = {
+  modMachine,
+  modLine,
+  modOee,
+  modShift,
+  modMaint,
+  modQuality,
+  modInventory,
+  modEnergy,
+  modUtilities,
+  modSafety
+};
+
 const CARD_THEMES = {
   "Energy": { border: "border-emerald-200/80 hover:border-emerald-400 hover:shadow-emerald-500/10", bg: "bg-gradient-to-br from-emerald-50/40 via-white to-white", iconBg: "bg-emerald-100 text-emerald-700", badge: "bg-emerald-100 text-emerald-800 border-emerald-200", link: "text-emerald-700" },
   "Quality": { border: "border-violet-200/80 hover:border-violet-400 hover:shadow-violet-500/10", bg: "bg-gradient-to-br from-violet-50/40 via-white to-white", iconBg: "bg-violet-100 text-violet-700", badge: "bg-violet-100 text-violet-800 border-violet-200", link: "text-violet-700" },
@@ -433,24 +457,24 @@ export default function Solutions() {
       </section>
 
       {/* ══════════════════════════════════════
-          § 5 — HOLISTIC SHOP-FLOOR MASTERY MODULE SWITCHER
+          § 5 — HOLISTIC SHOP-FLOOR MASTERY MODULE SWITCHER (Single Destination)
       ══════════════════════════════════════ */}
-      <section className="py-20 bg-slate-900 text-white aplos-grid">
+      <section className="py-20 bg-slate-900 text-white aplos-grid overflow-hidden">
         <Container>
           <div className="mb-14 text-center">
             <span className="inline-block rounded-full border border-blue-400/30 bg-blue-400/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-widest text-blue-400">
               Single Destination
             </span>
             <h2 className="mt-4 text-3xl font-black text-white sm:text-4xl">
-              Holistic Shop-Floor Automation Mastery
+              Single Destination for Shop-Floor Automation Mastery
             </h2>
             <p className="mt-3 text-slate-300 max-w-2xl mx-auto text-sm sm:text-base">
-              A comprehensive suite of factory intelligence modules designed to monitor, track, and optimize every operational parameter.
+              A holistic portfolio of 10 interconnected factory intelligence modules designed to monitor, analyze, and optimize every machine, line, and operational workflow.
             </p>
           </div>
 
-          {/* Module Switcher Buttons */}
-          <div className="flex flex-wrap justify-center gap-2.5 mb-12">
+          {/* Module Switcher Buttons Bar */}
+          <div className="flex flex-wrap justify-center gap-2 mb-12">
             {holisticModules.map((module) => {
               const Icon = module.icon;
               const isActive = activeModuleId === module.id;
@@ -458,12 +482,12 @@ export default function Solutions() {
                 <button
                   key={module.id}
                   onClick={() => setActiveModuleId(module.id)}
-                  className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold transition-all ${isActive
-                    ? "bg-orange-500 text-white shadow-lg shadow-orange-500/30 ring-2 ring-orange-400"
-                    : "border border-white/15 bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white"
+                  className={`flex items-center gap-2 rounded-full px-4 py-2.5 text-xs font-extrabold transition-all duration-200 ${isActive
+                    ? "bg-orange-500 text-white shadow-xl shadow-orange-500/35 ring-2 ring-orange-400 scale-105"
+                    : "border border-white/15 bg-white/5 text-slate-300 hover:bg-white/12 hover:text-white"
                     }`}
                 >
-                  <Icon size={15} />
+                  <Icon size={14} />
                   {module.tag}
                 </button>
               );
@@ -472,26 +496,37 @@ export default function Solutions() {
 
           {/* Active Module Details Showcase */}
           {activeModule && (
-            <div className="grid gap-10 rounded-3xl border border-white/15 bg-white/5 p-8 backdrop-blur-xl lg:grid-cols-2 lg:items-center lg:p-12">
+            <div className="grid gap-10 rounded-3xl border border-white/15 bg-gradient-to-br from-[#04264c]/90 via-[#031d3b]/95 to-[#021329] p-7 sm:p-10 shadow-2xl backdrop-blur-xl lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
               <div>
-                <span className="inline-block rounded-full bg-orange-500/20 border border-orange-400/30 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-orange-400">
-                  {activeModule.tag}
-                </span>
-                <h3 className="mt-3 text-2xl sm:text-3xl font-black text-white">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="inline-block rounded-full bg-orange-500/20 border border-orange-400/40 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-orange-400">
+                    {activeModule.tag}
+                  </span>
+                  <span className="text-[10px] font-bold text-emerald-400 flex items-center gap-1">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    LIVE MODULE
+                  </span>
+                </div>
+
+                <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight">
                   {activeModule.title}
                 </h3>
-                <p className="mt-4 text-sm sm:text-base text-blue-100/80 leading-relaxed">
-                  {activeModule.desc}
+                <p className="mt-3 text-sm sm:text-base text-blue-100/90 leading-relaxed">
+                  {activeModule.subheading}
                 </p>
 
-                <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                {/* 6 Feature Point Cards */}
+                <div className="mt-8 grid gap-3.5 sm:grid-cols-2">
                   {activeModule.points.map((pt, i) => (
-                    <div key={i} className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
-                      <p className="font-bold text-white text-sm flex items-center gap-2">
-                        <span className="h-2 w-2 rounded-full bg-orange-400" />
+                    <div
+                      key={i}
+                      className="group/pt flex flex-col justify-between rounded-2xl border border-white/10 bg-white/6 p-4 backdrop-blur transition duration-200 hover:border-orange-400/40 hover:bg-white/10"
+                    >
+                      <p className="font-bold text-white text-xs sm:text-sm flex items-center gap-2">
+                        <span className="h-2 w-2 rounded-full bg-orange-400 shrink-0 group-hover/pt:scale-125 transition" />
                         {pt.name}
                       </p>
-                      <p className="mt-1 text-xs text-blue-200/90 leading-relaxed">
+                      <p className="mt-1.5 text-[11px] sm:text-xs text-blue-200/80 leading-relaxed font-normal">
                         {pt.text}
                       </p>
                     </div>
@@ -499,10 +534,24 @@ export default function Solutions() {
                 </div>
               </div>
 
-              {/* Right Mockup Display */}
+              {/* Right Screenshot Showcase */}
               <div className="relative">
-                <div className="rounded-2xl border border-white/10 bg-[#031d3b] p-6 shadow-2xl">
-                  <DashboardMockup title={activeModule.title} />
+                <div className="relative overflow-hidden rounded-2xl border border-white/15 bg-blue-950 p-2 shadow-2xl transition duration-500 hover:border-orange-400/30">
+                  <picture>
+                    <source type="image/webp" srcSet={MODULE_IMAGES[activeModule.imageKey] || modMachine} />
+                    <img
+                      src={MODULE_IMAGES[activeModule.imageKey] || modMachine}
+                      width="647"
+                      height="430"
+                      alt={activeModule.title}
+                      className="w-full h-auto rounded-xl object-cover shadow-inner"
+                    />
+                  </picture>
+
+                  <div className="absolute top-4 right-4 flex items-center gap-1.5 rounded-full bg-blue-950/90 border border-white/20 px-3 py-1 text-[10px] font-bold text-blue-200 backdrop-blur">
+                    <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                    Real-Time Dashboard
+                  </div>
                 </div>
               </div>
             </div>

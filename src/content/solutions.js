@@ -32,7 +32,11 @@ import {
   CalendarCheck,
   AlertTriangle,
   Flame,
-  Droplets
+  Droplets,
+  Radio,
+  Boxes as InventoryIcon,
+  ShieldAlert,
+  SlidersHorizontal
 } from "lucide-react";
 
 export const solutionsHero = {
@@ -160,91 +164,160 @@ export const holisticModules = [
     id: "machinemonitoring",
     tag: "Machine Monitoring",
     title: "Detailed View of High-Value Assets",
-    desc: "Monitor CNCs, robotic arms, Swiss lathes, and precision equipment in real time to maximize operational efficiency.",
+    subheading: "Monitor equipment (CNC, robotic arms, Swiss, precision presses) in real time to maximize efficiency.",
+    imageKey: "modMachine",
     icon: Gauge,
     points: [
-      { name: "Condition Monitoring", text: "Access real-time health and vibration/heat metrics of assets." },
-      { name: "Machine Performance", text: "Analyze speed, output, energy draw, and PMC indicators." },
-      { name: "Uptime vs. Downtime", text: "Track operational intervals to minimize unplanned stops." },
-      { name: "Machine Utilization", text: "Compare actual runtime against scheduled available shift hours." }
+      { name: "Condition Monitoring", text: "Access real-time data on the health and performance of industrial equipment." },
+      { name: "Machine Performance", text: "Analyze speed, output, energy consumption, and PMC indicators to optimize performance." },
+      { name: "Machine Uptime / Downtime", text: "Monitor intervals when the machine is operational and non-operational to minimize disruptions." },
+      { name: "Machine Utilization", text: "Measure actual operation time against scheduled available hours to optimize production schedules." },
+      { name: "Asset Operations", text: "Monitor real-time asset performance across multiple lines." },
+      { name: "Usage Patterns", text: "Analyze machine usage patterns for optimized shift allocation and performance." }
     ]
   },
   {
-    id: "productionline",
+    id: "productionlinemonitoring",
     tag: "Production Line Monitoring",
-    title: "Reduce Downtime & Stoppages for Max Efficiency",
-    desc: "Proactively monitor multi-station assembly lines for enhanced throughput and zero-defect quality control.",
+    title: "Reduce Downtime & Stoppages for Production Efficiency",
+    subheading: "Proactively monitor operations for enhanced productivity, bottleneck elimination, and quality control.",
+    imageKey: "modLine",
     icon: Factory,
     points: [
-      { name: "Line Stoppages", text: "Identify exact root cause, duration, and frequency of line stops." },
-      { name: "Cycle Time Analysis", text: "Track station-wise cycle time to eliminate bottlenecks." },
-      { name: "Planned vs. Actual Yield", text: "Compare projected output against real-time finished units." },
-      { name: "Operator Efficiency", text: "Monitor task completion rates and operator station activity." }
+      { name: "Line Stoppages", text: "Gain insights into the cause, duration, and frequency of line interruptions." },
+      { name: "Cycle Time Analysis", text: "Analyze the time to task completion to identify bottlenecks and optimize workflows." },
+      { name: "Planned vs Actual Yield", text: "Compare projected and actual outputs to assess production effectiveness." },
+      { name: "Reject Rate Tracking", text: "Assess the percentage of manufactured products that do not meet quality standards." },
+      { name: "Production Downtime", text: "Gain insights into the reasons for interruptions and their overall operational impact." },
+      { name: "Operator Efficiency", text: "View operator activities, performance metrics, and task completion rates." }
     ]
   },
   {
-    id: "oee",
+    id: "overallequipmenteffectiveness",
     tag: "Overall Equipment Effectiveness",
-    title: "Evaluate OEE for World-Class Productivity",
-    desc: "Automatically calculate the 3 golden pillars of manufacturing: Availability, Performance, and Quality.",
+    title: "Evaluate OEE for Greater Shop Floor Productivity",
+    subheading: "Assess Availability, Performance Efficiency, and Quality Yield across all production lines.",
+    imageKey: "modOee",
     icon: BarChart3,
     points: [
-      { name: "Equipment Effectiveness", text: "Instant live OEE dashboard across machines, shifts, and plants." },
-      { name: "Production Bottlenecks", text: "Highlight slow-running stations and micro-stoppages." },
-      { name: "OEE Benchmarking", text: "Compare OEE against global Industry 4.0 standards." },
-      { name: "Availability Tracking", text: "Schedule preventative maintenance to prevent breakdowns." }
+      { name: "Equipment Effectiveness", text: "Determine live availability, performance, and quality of industrial equipment." },
+      { name: "Production Bottlenecks", text: "Identify process constraints, slow-running stations, and micro-stoppages." },
+      { name: "OEE Benchmarking", text: "Compare OEE of equipment with established standards to set performance targets." },
+      { name: "Asset Performance", text: "View real-time data on the health, condition, and usage of high-value assets." },
+      { name: "Productivity Tracking", text: "Optimize workflows and energy efficiency by assessing operational output." },
+      { name: "Availability Management", text: "Track operational assets ready for use to plan scheduled maintenance." }
     ]
   },
   {
-    id: "shifts",
-    tag: "Shifts & Job Allocation",
-    title: "Track Shifts, Jobs, and Resource Utilization",
-    desc: "Digital shift management and automated work order job card tracking for personnel and equipment.",
+    id: "shiftsandjobsallocation",
+    tag: "Shifts & Jobs Allocation",
+    title: "Keep Track of Shifts, Jobs, and Workstation Resources",
+    subheading: "Ensure optimal coordination of employee and equipment shifts based on energy consumption and productivity.",
+    imageKey: "modShift",
     icon: CalendarCheck,
     points: [
-      { name: "Real-Time Shift Data", text: "Continuous analysis and shift report generation." },
-      { name: "Resource Allocation", text: "Distribute tasks across operators and workstations." },
-      { name: "Digital Job Cards", text: "Paperless work orders linked directly to serial numbers." },
-      { name: "Idle Time Analysis", text: "Compare productive work time vs. line wait time." }
+      { name: "Real-Time Shift Data", text: "Continuous monitoring, analysis, and reporting of operational data during work shifts." },
+      { name: "Resource Allocation", text: "Optimized distribution of personnel, machinery, and raw materials." },
+      { name: "Digital Job Cards", text: "Digital records containing detailed work order instructions linked to serial numbers." },
+      { name: "Shift Scheduling", text: "Automation of work shifts for personnel and machines to optimize resource deployment." },
+      { name: "Workforce Efficiency", text: "Insights for enhancing overall operator productivity and team collaboration." },
+      { name: "Idle Time vs Productive Time", text: "Analysis of machine idle time to enable timely interventions." }
     ]
   },
   {
-    id: "maintenance",
+    id: "maintenanceandsla",
     tag: "Maintenance & SLAs",
-    title: "Predictive Maintenance & Mobile Work Orders",
-    desc: "Automate maintenance schedules, detect early signs of failure, and resolve SLAs faster.",
+    title: "Perform Condition Monitoring, Predictive PM, and Work Orders",
+    subheading: "Automate tasks quickly and reduce maintenance costs. Detect early signs of downtime and schedule PM proactively.",
+    imageKey: "modMaint",
     icon: Wrench,
     points: [
-      { name: "Predictive Maintenance", text: "AI-driven anomaly detection before catastrophic breakdown." },
-      { name: "Mobile Work Orders", text: "Digital work instructions pushed to technician mobile apps." },
-      { name: "Scheduled PM Log", text: "Track maintenance history and component replacement cycles." },
-      { name: "Asset Repository", text: "Complete lifecycle management from installation to decommission." }
+      { name: "Remote Asset Condition Monitoring", text: "Analyze real-time data on the health and performance of industrial assets remotely." },
+      { name: "Predictive Maintenance", text: "Proactively prevent equipment failures and extend the lifecycle span of assets." },
+      { name: "Mobile Work Orders", text: "Digitally access detailed work instructions, asset info, and task assignments." },
+      { name: "Scheduled Planned Maintenance", text: "Schedule maintenance based on machine health to improve operational reliability." },
+      { name: "Asset Repository", text: "Access a comprehensive view of your assets to optimize maintenance strategies." },
+      { name: "Roles & Approval Automation", text: "Enable workflow automation, conditional approvals, and role permissions." }
     ]
   },
   {
-    id: "quality",
-    tag: "Quality Analysis & DigiQA",
-    title: "Meet Quality & ISO Standards with Precision",
-    desc: "Digital quality checkpoints, safety test panel validation, and 100% serial number traceability.",
+    id: "qualityanalysis",
+    tag: "Quality Analysis",
+    title: "Meet Standards with Precision & DigiQA Validation",
+    subheading: "Create quality benchmarks and implement safety measures while ensuring regulatory compliance with ISO and OEM standards.",
+    imageKey: "modQuality",
     icon: ShieldCheck,
     points: [
-      { name: "100% Traceability", text: "Track product serial number history and test parameters." },
-      { name: "Defect Analysis", text: "Classify rejections into Pareto charts for quick CAPA action." },
-      { name: "Regulatory Compliance", text: "Comply with ISO, FDA, and OEM quality audit standards." },
-      { name: "Safety Panel Testing", text: "Validate insulation, HV, and circuit safety before dispatch." }
+      { name: "Equipment Health", text: "Enable real-time monitoring of the condition and operational performance of machinery." },
+      { name: "Production Quality Yield", text: "Measure the quantity and quality of industrial process output relative to input." },
+      { name: "Full Serial Traceability", text: "Track and record product production history and test result parameters." },
+      { name: "Regulatory Compliance", text: "Build trust and minimize legal and regulatory compliance risks." },
+      { name: "Material Composition", text: "Accurately monitor the composition of raw materials to ensure quality standards." },
+      { name: "Defect Pareto Analysis", text: "Analyze abnormalities in production to reduce waste and improve efficiency." }
     ]
   },
   {
-    id: "energy",
-    tag: "Energy & Sustainability (EMS)",
-    title: "Optimize Energy & Reduce Carbon Footprint",
-    desc: "Monitor power, kWh, power factor, and carbon emissions across compressors, chillers, and machine lines.",
+    id: "assetandinventorytracking",
+    tag: "Asset & Inventory Tracking",
+    title: "Trace Assets and Stock from Source to Shelf",
+    subheading: "Access real-time insights and comprehensive visibility to prevent loss and maximize asset usage.",
+    imageKey: "modInventory",
+    icon: InventoryIcon,
+    points: [
+      { name: "Asset Identification", text: "Gain enhanced visibility of assets and perform maintenance as needed." },
+      { name: "Location Tracking", text: "Track asset location with GPS, BLE, and RFID to improve logistics." },
+      { name: "Stock Availability", text: "Monitor stock availability to reduce stock-outs or overstocking." },
+      { name: "Maintenance & Service History", text: "Document all maintenance activities to optimize resource allocation." },
+      { name: "Utilization Analysis", text: "Optimize inventory management for accurate order fulfillment." },
+      { name: "Geo-Fencing Boundaries", text: "Create virtual boundaries and trigger alerts when assets move." }
+    ]
+  },
+  {
+    id: "energyandsustainability",
+    tag: "Energy & Sustainability",
+    title: "Optimize Energy Consumption & Reduce Carbon Footprint",
+    subheading: "Monitor and control energy consumption by HVACs, DGs, Compressors, Chillers, and production machines.",
+    imageKey: "modEnergy",
     icon: Zap,
     points: [
-      { name: "Energy Patterns", text: "Identify peak demand spikes and non-productive energy waste." },
-      { name: "Carbon Emissions (CO2)", text: "Track greenhouse gas emissions for ESG compliance." },
-      { name: "Utilities Monitoring", text: "Monitor power, water, gas flow, and air pressure in real time." },
-      { name: "AI Demand Forecasting", text: "Predict shift energy consumption using machine learning models." }
+      { name: "Energy Consumption Pattern", text: "Take a data-driven approach to improving energy efficiency and reducing costs." },
+      { name: "Carbon Emissions (CO2)", text: "Measure, track, and manage greenhouse gas releases for ESG goals." },
+      { name: "Waste Generation Insights", text: "Access real-time insights into volume and types of industrial waste created." },
+      { name: "Renewable Energy Integration", text: "Integrate solar and renewable energy sources with your plant layout." },
+      { name: "Measurement & Verification (M&V)", text: "Validate energy savings, process improvements, and sustainability KPIs." },
+      { name: "AI Prediction & Forecasting", text: "Analyze historical energy data to forecast future shift power demand." }
+    ]
+  },
+  {
+    id: "utilitiesmonitoring",
+    tag: "Utilities Monitoring",
+    title: "Unlock Savings Potential with Smart Utilities",
+    subheading: "Acquire, manage, and report vital data from power, water, gas, and air flow meters.",
+    imageKey: "modUtilities",
+    icon: Droplets,
+    points: [
+      { name: "Power Quality Tracking", text: "Track voltage stability, frequency, and harmonic distortion to prevent trips." },
+      { name: "Water Usage Monitoring", text: "Monitor water consumption throughout plant facilities." },
+      { name: "Gas Flow & Pressure", text: "Measure flow rates and pressure levels of gases across facilities." },
+      { name: "Leak Detection", text: "Detect water or gas leaks and anomalies to prevent resource waste." },
+      { name: "Demand Planning", text: "Monitor real-time energy consumption patterns and load fluctuations." },
+      { name: "Remote Utility Monitoring", text: "Oversee utility usage and meter parameters from any location." }
+    ]
+  },
+  {
+    id: "safetyandcontrol",
+    tag: "Safety & Control",
+    title: "For Safe & Secure Manufacturing Operations",
+    subheading: "Continually monitor fire safety equipment, environmental sensors, and safety interlocks.",
+    imageKey: "modSafety",
+    icon: ShieldAlert,
+    points: [
+      { name: "Sprinkler System Status", text: "Monitor sprinkler system pressure to ensure proper readiness." },
+      { name: "Emergency Sirens & Lighting", text: "Detect emergencies and enable sirens to notify shop floor personnel." },
+      { name: "Temperature Anomaly Detection", text: "Monitor temperature spikes and thermal anomalies in real time." },
+      { name: "Remote Safety Control", text: "Oversee safety interlocks and alarms from any location." },
+      { name: "Extinguisher Status", text: "Track availability and status of fire extinguishers for timely intervention." },
+      { name: "Smoke Sensor Detection", text: "Detect smoke anomalies and automatically trigger emergency notifications." }
     ]
   }
 ];
