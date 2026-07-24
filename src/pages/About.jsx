@@ -23,13 +23,13 @@ import SectionHeading from "../components/common/SectionHeading";
 import CustomerShowcase from "../components/common/CustomerShowcase";
 import PromiseGrid from "../components/common/PromiseGrid";
 import CTASection from "../components/common/CTASection";
-import DashboardMockup from "../components/common/DashboardMockup";
+
 import IIoTVennDiagram from "../components/common/IIoTVennDiagram";
 import AnimatedCounter from "../components/common/AnimatedCounter";
 
 import iiotBannerOv1 from "../assets/image/iiot_banner_ov1.svg";
 import iiotBannerOv2 from "../assets/image/iiot_banner_ov2.svg";
-import iiotBannerOv3 from "../assets/image/iiot_banner_ov3.svg";
+
 
 export default function About() {
   const [activePlatformTab, setActivePlatformTab] = useState("aplos-edge");
@@ -92,7 +92,7 @@ export default function About() {
               </div>
 
               {/* Floating Badge Overlays */}
-              <div className="absolute -top-6 -left-4 sm:-left-8 w-44 sm:w-56 drop-shadow-2xl animate-float">
+              <div className="absolute -top-12 -left-8 sm:-left-8 w-44 sm:w-56 drop-shadow-2xl animate-float">
                 <img
                   src={iiotBannerOv1}
                   width="234"
@@ -101,7 +101,7 @@ export default function About() {
                 />
               </div>
 
-              <div className="absolute -bottom-6 -right-4 sm:-right-6 w-40 sm:w-52 drop-shadow-2xl animate-float delay-200">
+              <div className="absolute -bottom-12 -right-12 sm:-right-8 w-40 sm:w-52 drop-shadow-2xl animate-float delay-200">
                 <img
                   src={iiotBannerOv2}
                   width="204"
@@ -161,11 +161,10 @@ export default function About() {
                   <button
                     key={tab.id}
                     onClick={() => setActivePlatformTab(tab.id)}
-                    className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-extrabold transition-all duration-200 ${
-                      activePlatformTab === tab.id
-                        ? "bg-blue-700 text-white shadow-md ring-2 ring-blue-600"
-                        : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-100"
-                    }`}
+                    className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-extrabold transition-all duration-200 ${activePlatformTab === tab.id
+                      ? "bg-blue-700 text-white shadow-md ring-2 ring-blue-600"
+                      : "border border-slate-200 bg-white text-slate-700 hover:bg-slate-100"
+                      }`}
                   >
                     <TabIcon size={15} />
                     <span>{tab.name}</span>
