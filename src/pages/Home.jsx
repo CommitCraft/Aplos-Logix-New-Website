@@ -67,8 +67,9 @@ const HERO_WORDS = ["Quality", "Efficiency", "Intelligence", "Visibility"];
 ═══════════════════════════════════════════ */
 export default function Home() {
   const { word, visible } = useWordRotation(HERO_WORDS);
-  const [activeTab, setActiveTab] = useState("devices");
-  const activeFeature = platformFeatures.find((f) => f.id === activeTab);
+  const [activeTab, setActiveTab] = useState("machine-monitoring");
+  const activeFeature = platformFeatures.find((f) => f.id === activeTab) || platformFeatures[0];
+  const [activeSubIndex, setActiveSubIndex] = useState(0);
 
   return (
     <main className="overflow-hidden">
@@ -317,23 +318,26 @@ export default function Home() {
       {/* ══════════════════════════════════════
           § 5 — PLATFORM FEATURES TABS
       ══════════════════════════════════════ */}
-      <section className="py-20 bg-slate-50">
+      {/* ══════════════════════════════════════
+          § 5 — HOLISTIC SHOP-FLOOR AUTOMATION MASTERY (10 MODULES)
+      ══════════════════════════════════════ */}
+      <section className="py-20 bg-slate-50/80">
         <Container>
           {/* Section header */}
           <div className="mb-12 text-center">
-            <span className="inline-block rounded-full bg-blue-100 px-4 py-1.5 text-[11px] font-bold uppercase tracking-widest text-blue-700">
-              Platform Capabilities
+            <span className="inline-block rounded-full bg-blue-100 border border-blue-200 px-4 py-1.5 text-[11px] font-extrabold uppercase tracking-widest text-blue-700">
+              Shop-Floor Automation Mastery
             </span>
-            <h2 className="mt-4 text-4xl font-black tracking-tight text-blue-950 sm:text-5xl">
-              One Platform. Every Layer.
+            <h2 className="mt-4 text-3xl font-black tracking-tight text-blue-950 sm:text-4xl lg:text-5xl max-w-3xl mx-auto leading-tight">
+              Single Destination to Achieve Holistic Shop-Floor Mastery
             </h2>
-            <p className="mt-4 mx-auto max-w-xl text-slate-600">
-              From edge device connectivity to cloud analytics and remote control — everything you need to run a truly connected factory.
+            <p className="mt-4 mx-auto max-w-2xl text-slate-600 text-sm sm:text-base leading-relaxed font-medium">
+              Integrate Aplos Logix IIoT across your equipment, production lines, OEE analytics, shift schedules, maintenance SLAs, DigiQA quality gates, energy, and plant utilities.
             </p>
           </div>
 
-          {/* Tab buttons */}
-          <div className="mb-10 flex flex-wrap justify-center gap-2">
+          {/* 10 Module Tab Buttons */}
+          <div className="mb-10 flex flex-wrap justify-center gap-2 max-w-5xl mx-auto">
             {platformFeatures.map((tab) => {
               const Icon = tab.icon;
               const active = activeTab === tab.id;
@@ -341,14 +345,17 @@ export default function Home() {
                 <button
                   key={tab.id}
                   id={`tab-${tab.id}`}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold transition-all duration-200 ${active
-                    ? "bg-blue-700 text-white shadow-lg shadow-blue-700/25"
-                    : "border border-slate-200 bg-white text-slate-600 hover:border-blue-300 hover:text-blue-700"
+                  onClick={() => {
+                    setActiveTab(tab.id);
+                    setActiveSubIndex(0);
+                  }}
+                  className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-extrabold transition-all duration-200 ${active
+                    ? "bg-blue-700 text-white shadow-lg shadow-blue-700/25 ring-2 ring-blue-600"
+                    : "border border-slate-200 bg-white text-slate-700 hover:border-blue-300 hover:text-blue-700 hover:bg-slate-50"
                     }`}
                 >
-                  <Icon size={15} />
-                  {tab.label}
+                  <Icon size={14} />
+                  <span>{tab.label}</span>
                 </button>
               );
             })}
@@ -356,36 +363,72 @@ export default function Home() {
 
           {/* Tab content panel */}
           {activeFeature && (
-            <div className="grid gap-10 overflow-hidden rounded-3xl border border-blue-100 bg-white p-8 shadow-sm lg:grid-cols-2 lg:items-center lg:p-12">
-              {/* Left: text */}
+            <div key={activeFeature.id} className="grid gap-10 overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-xl lg:grid-cols-2 lg:items-center lg:p-12 animate-fade-in-up">
+              {/* Left Column: Details & Accordion Sub-features */}
               <div>
-                <span className="text-[11px] font-bold uppercase tracking-widest text-orange-500">
-                  {activeFeature.label}
+                <span className="inline-block rounded-full bg-orange-100 border border-orange-200 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-orange-700 mb-3">
+                  {activeFeature.tag}
                 </span>
-                <h3 className="mt-3 text-3xl font-black tracking-tight text-blue-950">
+                <h3 className="text-2xl font-black tracking-tight text-blue-950 sm:text-3xl leading-snug">
                   {activeFeature.headline}
                 </h3>
-                <p className="mt-4 text-base leading-7 text-slate-600">
-                  {activeFeature.description}
+                <p className="mt-3 text-sm sm:text-base leading-relaxed text-slate-600 font-medium">
+                  {activeFeature.subHeading}
                 </p>
-                <ul className="mt-7 space-y-3">
-                  {activeFeature.points.map((pt) => (
-                    <li key={pt} className="flex items-center gap-3 text-sm font-semibold text-slate-700">
-                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-700">
-                        <Check size={13} />
-                      </span>
-                      {pt}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-8">
-                  <ButtonLink to="/solutions" arrow>Explore Feature</ButtonLink>
+
+                {/* Sub-features Accordion / Grid List */}
+                {activeFeature.subFeatures && (
+                  <div className="mt-6 space-y-2.5 max-h-[340px] overflow-y-auto pr-2 custom-scrollbar">
+                    {activeFeature.subFeatures.map((sub, idx) => {
+                      const isSubActive = activeSubIndex === idx;
+                      return (
+                        <div
+                          key={sub.title}
+                          onClick={() => setActiveSubIndex(idx)}
+                          className={`cursor-pointer rounded-2xl border p-3.5 transition duration-200 ${isSubActive
+                            ? "border-blue-400 bg-blue-50/70 shadow-sm"
+                            : "border-slate-100 bg-slate-50/50 hover:bg-slate-100/80"
+                            }`}
+                        >
+                          <h4 className="text-xs font-extrabold text-blue-950 flex items-center justify-between">
+                            <span>{sub.title}</span>
+                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${isSubActive ? "bg-blue-600 text-white" : "bg-slate-200 text-slate-600"}`}>
+                              {isSubActive ? "Active View" : "Explore"}
+                            </span>
+                          </h4>
+                          <p className="mt-1 text-xs text-slate-600 leading-relaxed font-normal">
+                            {sub.desc}
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+
+                <div className="mt-8 flex items-center gap-4">
+                  <ButtonLink to="/solutions" arrow>Explore Solution</ButtonLink>
+                  <ButtonLink to="/contact" variant="outline">Book Consultation</ButtonLink>
                 </div>
               </div>
 
-              {/* Right: dashboard visual */}
-              <div className="rounded-2xl bg-blue-950 p-6">
-                <DashboardMockup title={activeFeature.headline} />
+              {/* Right Column: High-Res WebP Dashboard Screenshot */}
+              <div className="relative overflow-hidden rounded-2xl border-2 border-slate-200 bg-[#021329] p-3 shadow-2xl transition duration-500 hover:shadow-2xl hover:border-blue-400">
+                <div className="mb-2 flex items-center justify-between border-b border-white/10 pb-2 px-1">
+                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-blue-200 flex items-center gap-1.5">
+                    <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                    Live IIoT Telemetry Panel
+                  </span>
+                  <span className="text-[10px] font-bold text-amber-400 bg-amber-400/10 border border-amber-400/20 px-2 py-0.5 rounded-full">
+                    {activeFeature.label}
+                  </span>
+                </div>
+                <img
+                  key={activeFeature.id}
+                  src={activeFeature.image}
+                  alt={activeFeature.headline}
+                  className="w-full h-auto rounded-xl object-cover shadow-inner transition duration-300 hover:scale-[1.01]"
+                  loading="lazy"
+                />
               </div>
             </div>
           )}

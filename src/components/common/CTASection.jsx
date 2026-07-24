@@ -1,152 +1,93 @@
-import { ArrowRight, Factory } from "lucide-react";
-
-import ButtonLink from "./ButtonLink";
+import { ArrowRight, Factory, Sparkles, CheckCircle2, PhoneCall, ShieldCheck, Zap } from "lucide-react";
+import { Link } from "react-router-dom";
 import Container from "./Container";
 
 export default function CTASection({
   title = "Ready to Transform Your Factory?",
-  text = "Bring quality, production, traceability and live shop-floor intelligence into one connected system.",
-  button = "Book a Free Demo",
+  text = "Bring quality, production, traceability, and live shop-floor intelligence into one connected ecosystem.",
+  button = "Book a Focused Consultation",
 }) {
   return (
-    <section className="py-12 sm:py-16">
+    <section className="py-16 lg:py-20">
       <Container>
-        <div
-          className="
-            relative
-            overflow-hidden
-            rounded-[32px]
-            bg-gradient-to-br
-            from-slate-950
-            via-blue-950
-            to-blue-700
-            px-6
-            py-10
-            shadow-2xl
-            shadow-blue-950/20
-            sm:px-10
-            sm:py-12
-            lg:px-14
-            lg:py-14
-          "
-        >
-          {/* Decorative glow */}
-          <div className="pointer-events-none absolute -left-20 -top-20 h-64 w-64 rounded-full bg-blue-500/20 blur-3xl" />
+        <div className="relative overflow-hidden rounded-[36px] border-2 border-white/15 bg-gradient-to-br from-[#021329] via-[#04264c] to-[#031d3b] p-8 text-white shadow-2xl backdrop-blur-2xl sm:p-12 lg:p-16">
+          {/* Ambient Glowing Light Orbs */}
+          <div className="pointer-events-none absolute -top-32 -left-32 h-96 w-96 rounded-full bg-blue-600/25 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-amber-500/20 blur-3xl" />
 
-          <div className="pointer-events-none absolute -bottom-28 right-0 h-80 w-80 rounded-full bg-orange-400/15 blur-3xl" />
+          {/* Grid pattern overlay */}
+          <div className="pointer-events-none absolute inset-0 opacity-[0.08] aplos-grid" />
 
-          {/* Grid pattern */}
-          <div
-            className="
-              pointer-events-none
-              absolute
-              inset-0
-              opacity-[0.07]
-              [background-image:linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)]
-              [background-size:32px_32px]
-            "
-          />
-
-          <div className="relative z-10 flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-            {/* Content */}
-            <div className="max-w-3xl">
-              <div
-                className="
-                  mb-5
-                  inline-flex
-                  items-center
-                  gap-2
-                  rounded-full
-                  border
-                  border-white/15
-                  bg-white/10
-                  px-4
-                  py-2
-                  text-xs
-                  font-bold
-                  uppercase
-                  tracking-[0.18em]
-                  text-blue-100
-                  backdrop-blur-sm
-                "
-              >
-                <Factory size={15} />
-
-                Smart Manufacturing
+          <div className="relative z-10 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            {/* Left Content */}
+            <div className="max-w-2xl">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-1.5 text-[11px] font-extrabold uppercase tracking-widest text-amber-400">
+                <Sparkles size={14} className="animate-pulse" />
+                <span>Smart Manufacturing &amp; IIoT</span>
               </div>
 
-              <h2
-                className="
-                  text-3xl
-                  font-black
-                  leading-tight
-                  tracking-tight
-                  text-white
-                  sm:text-4xl
-                  lg:text-5xl
-                "
-              >
+              <h2 className="text-3xl font-black leading-[1.1] tracking-tight text-white sm:text-4xl lg:text-5xl">
                 {title}
               </h2>
 
-              <p
-                className="
-                  mt-4
-                  max-w-2xl
-                  text-base
-                  leading-7
-                  text-blue-100
-                  sm:text-lg
-                "
-              >
+              <p className="mt-4 text-base sm:text-lg leading-relaxed text-blue-100/90 font-normal">
                 {text}
               </p>
 
-              {/* Small capability list */}
-              <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold text-white/90">
-                <span>Quality Digitization</span>
-
-                <span className="hidden text-blue-300 sm:inline">•</span>
-
-                <span>Live Production Data</span>
-
-                <span className="hidden text-blue-300 sm:inline">•</span>
-
-                <span>IIoT Integration</span>
+              {/* 4 Capability Glass Pills */}
+              <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                <div className="flex items-center gap-2.5 rounded-2xl border border-white/10 bg-white/5 px-4 py-2.5 backdrop-blur transition hover:border-amber-400/40 hover:bg-white/10">
+                  <CheckCircle2 size={16} className="text-emerald-400 shrink-0" />
+                  <span className="text-xs font-extrabold text-blue-100">Quality Digitization &amp; DigiQA</span>
+                </div>
+                <div className="flex items-center gap-2.5 rounded-2xl border border-white/10 bg-white/5 px-4 py-2.5 backdrop-blur transition hover:border-amber-400/40 hover:bg-white/10">
+                  <CheckCircle2 size={16} className="text-emerald-400 shrink-0" />
+                  <span className="text-xs font-extrabold text-blue-100">Live OEE &amp; Production Data</span>
+                </div>
+                <div className="flex items-center gap-2.5 rounded-2xl border border-white/10 bg-white/5 px-4 py-2.5 backdrop-blur transition hover:border-amber-400/40 hover:bg-white/10">
+                  <CheckCircle2 size={16} className="text-emerald-400 shrink-0" />
+                  <span className="text-xs font-extrabold text-blue-100">Multi-Protocol IIoT Integration</span>
+                </div>
+                <div className="flex items-center gap-2.5 rounded-2xl border border-white/10 bg-white/5 px-4 py-2.5 backdrop-blur transition hover:border-amber-400/40 hover:bg-white/10">
+                  <CheckCircle2 size={16} className="text-emerald-400 shrink-0" />
+                  <span className="text-xs font-extrabold text-blue-100">ANDON &amp; WhatsApp Escalations</span>
+                </div>
               </div>
             </div>
 
-            {/* CTA */}
-            <div className="flex shrink-0 flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
-              <ButtonLink
-                to="/contact"
-                variant="orange"
-                arrow
-                className="
-                  min-w-[190px]
-                  justify-center
-                  shadow-lg
-                  shadow-orange-950/20
-                "
-              >
-                {button}
-              </ButtonLink>
+            {/* Right Action Box */}
+            <div className="flex flex-col items-start lg:items-end justify-center">
+              <div className="w-full max-w-md rounded-3xl border border-white/15 bg-white/5 p-6 backdrop-blur-xl shadow-xl space-y-4">
+                <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                  <span className="text-xs font-extrabold uppercase tracking-widest text-amber-400 flex items-center gap-2">
+                    <PhoneCall size={14} /> Direct Consultation
+                  </span>
+                  <span className="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-400/20 px-2 py-0.5 rounded-full">
+                    ● 24/7 SLA Response
+                  </span>
+                </div>
 
-              <ButtonLink
-                to="/solutions"
-                className="
-                  min-w-[170px]
-                  justify-center
-                  border
-                  border-white/20
-                  bg-white/10
-                  text-white
-                  backdrop-blur-sm
-                  hover:bg-white/20
-                "
-              >
-                Explore Solutions
-              </ButtonLink>
+                <p className="text-xs text-blue-200 leading-relaxed">
+                  Book a 1-on-1 session with our senior IIoT architects for DigiQA, EMS, QMS, OEE, ANDON, or test automation requirements.
+                </p>
+
+                <div className="space-y-3 pt-2">
+                  <Link
+                    to="/contact"
+                    className="flex w-full items-center justify-center gap-2 rounded-2xl bg-[#ffab00] px-6 py-3.5 text-sm font-black text-slate-950 shadow-lg shadow-amber-400/25 transition duration-300 hover:bg-[#ffc400] hover:shadow-amber-400/40 hover:scale-[1.02]"
+                  >
+                    <span>{button}</span>
+                    <ArrowRight size={16} />
+                  </Link>
+
+                  <Link
+                    to="/solutions"
+                    className="flex w-full items-center justify-center gap-2 rounded-2xl border border-white/20 bg-white/10 px-6 py-3 text-sm font-bold text-white transition hover:bg-white/20"
+                  >
+                    Explore IIoT Solutions
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>

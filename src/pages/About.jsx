@@ -175,7 +175,7 @@ export default function About() {
 
             {/* Active Tab Showcase Panel */}
             {currentTabObj && (
-              <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-xl lg:p-12">
+              <div key={currentTabObj.id} className="rounded-3xl border border-slate-200 bg-white p-8 shadow-xl lg:p-12 animate-fade-in-up">
                 <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-center">
                   <div>
                     <span className="inline-block rounded-full bg-blue-100 border border-blue-200 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-blue-800 mb-3">
@@ -193,17 +193,18 @@ export default function About() {
                         to={currentTabObj.link}
                         className="inline-flex items-center gap-2 text-sm font-black text-blue-700 hover:text-blue-900 transition"
                       >
-                        <span>Learn more</span>
+                        <span>Explore Solutions</span>
                         <ArrowRight size={16} />
                       </Link>
                     </div>
                   </div>
 
-                  <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 p-2 shadow-lg">
+                  <div className="relative overflow-hidden rounded-2xl border-2 border-slate-200 bg-[#021329] p-3 shadow-xl transition duration-500 hover:shadow-2xl hover:border-blue-400">
                     <img
+                      key={currentTabObj.id}
                       src={currentTabObj.image}
                       alt={currentTabObj.title}
-                      className="w-full h-auto rounded-xl object-cover shadow-sm"
+                      className="w-full h-auto rounded-xl object-cover shadow-sm transition duration-300 hover:scale-[1.01]"
                     />
                   </div>
                 </div>

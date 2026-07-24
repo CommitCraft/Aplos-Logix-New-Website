@@ -149,79 +149,203 @@ export const solutionModules = [
 ];
 
 /* ──────────────────────────────────────────
-   PLATFORM FEATURES — 5 tabs
+   PLATFORM FEATURES — 10 Shop-Floor Modules
 ────────────────────────────────────────── */
+import modMachine from "../assets/image/mod_machine.webp";
+import modLine from "../assets/image/mod_line.webp";
+import modOee from "../assets/image/mod_oee.webp";
+import modShift from "../assets/image/mod_shift.webp";
+import modMaint from "../assets/image/mod_maint.webp";
+import modQuality from "../assets/image/mod_quality.webp";
+import modInventory from "../assets/image/mod_inventory.webp";
+import modEnergy from "../assets/image/mod_energy.webp";
+import modUtilities from "../assets/image/mod_utilities.webp";
+import modSafety from "../assets/image/mod_safety.webp";
+
+import {
+  Cpu,
+  Workflow as IconWorkflow,
+  Gauge as IconGauge,
+  CalendarCheck,
+  Wrench as IconWrench,
+  ClipboardCheck as IconClipboardCheck,
+  Boxes as IconBoxes,
+  Flame,
+  Droplets,
+  ShieldAlert
+} from "lucide-react";
+
 export const platformFeatures = [
   {
-    id: "devices",
-    label: "Device Management",
-    icon: Router,
-    headline: "Connect & Manage Every Asset",
-    description:
-      "Onboard, monitor and manage machines, sensors, PLCs and test stations from a single device registry. Track connection status, firmware and data health in real time.",
-    points: [
-      "Unified device registry",
-      "Connection health monitoring",
-      "Protocol-agnostic integration",
-      "Remote configuration support",
-    ],
+    id: "machine-monitoring",
+    label: "Machine Monitoring",
+    tag: "Machine Monitoring",
+    icon: Cpu,
+    headline: "A Detailed View of High-Value Assets",
+    subHeading: "Monitor equipment (CNC, robotic arm, SWISS, precision etc) in real time to maximize efficiency.",
+    image: modMachine,
+    subFeatures: [
+      { title: "Condition Monitoring", desc: "Access real-time data on the health and performance of industrial equipment." },
+      { title: "Machine Performance", desc: "Analyze speed, output, energy consumption, and health indicators to optimize performance." },
+      { title: "Machine Uptime/Downtime", desc: "Monitor intervals when the machine is operational (uptime) and non-operational (downtime) to minimize disruptions." },
+      { title: "Machine Utilization", desc: "Measure actual operation time against scheduled available hours to optimize production schedules." },
+      { title: "Asset Operations", desc: "Monitor real-time asset performance across all active production shifts." },
+      { title: "Usage Patterns", desc: "Analyze machine usage patterns for optimized shift allocation and peak output." }
+    ]
   },
   {
-    id: "monitoring",
-    label: "Live Monitoring",
-    icon: RadioTower,
-    headline: "Real-time Factory Visibility",
-    description:
-      "Stream live data from every machine and station. View trends, alarms and KPIs across lines, shifts and plants without any delay.",
-    points: [
-      "Sub-second data refresh",
-      "Multi-line dashboards",
-      "Shift-based views",
-      "Mobile-ready displays",
-    ],
+    id: "line-monitoring",
+    label: "Production Line Monitoring",
+    tag: "Production Line Monitoring",
+    icon: IconWorkflow,
+    headline: "Reduce Downtime & Stoppages for Production Efficiency",
+    subHeading: "Proactively monitor operations for enhanced productivity and quality control.",
+    image: modLine,
+    subFeatures: [
+      { title: "Line Stoppages", desc: "Gain insights into the cause, duration, and frequency of interruptions." },
+      { title: "Cycle Time", desc: "Analyze the time to task completion to identify bottlenecks and optimize workflows." },
+      { title: "Planned vs Actual Yield", desc: "Compare projected and actual outputs to assess production planning and enhance overall yield." },
+      { title: "Reject Rate", desc: "Assess the percentage of manufactured products that do not meet quality standards and take corrective action." },
+      { title: "Production Downtime", desc: "Gain insights into the reasons for interruptions, their duration, and operational impact." },
+      { title: "Operator Efficiency", desc: "View operator activities, performance metrics, and task completion rates to enhance productivity." }
+    ]
   },
   {
-    id: "analytics",
-    label: "Analytics & Reports",
-    icon: BarChart3,
-    headline: "Turn Data into Decisions",
-    description:
-      "Analyze production trends, rejection patterns, downtime causes and energy usage with configurable charts, drill-down views and automated reports.",
-    points: [
-      "Trend analysis dashboards",
-      "Root cause drill-down",
-      "Custom report builder",
-      "Scheduled Excel / PDF exports",
-    ],
+    id: "oee",
+    label: "Overall Equipment Effectiveness (OEE)",
+    tag: "Overall Equipment Effectiveness",
+    icon: IconGauge,
+    headline: "Evaluate OEE for Greater Productivity",
+    subHeading: "Assess availability, performance efficiency, and quality yield across all lines.",
+    image: modOee,
+    subFeatures: [
+      { title: "Equipment Effectiveness", desc: "Determine the availability, performance, and quality of industrial equipment." },
+      { title: "Production Bottlenecks", desc: "Identify process constraints and slowdowns before lines stall." },
+      { title: "Benchmarking", desc: "Compare OEE of industrial equipment with established standards to set performance targets." },
+      { title: "Asset Performance", desc: "View real-time data on the health, condition, and usage of key shop floor assets." },
+      { title: "Productivity", desc: "Optimize workflows and energy efficiency by assessing industrial operations and output." },
+      { title: "Availability", desc: "Track assets operational and ready for use to plan scheduled maintenance and avoid unplanned stops." }
+    ]
   },
   {
-    id: "alerts",
-    label: "Alerts & ANDON",
-    icon: BellRing,
-    headline: "Instant Alerts. Zero Misses.",
-    description:
-      "Configure threshold-based alerts for quality, OEE, energy and machine health. Notify operators, supervisors and engineers via ANDON boards and email.",
-    points: [
-      "Threshold-based triggers",
-      "Escalation workflows",
-      "ANDON board integration",
-      "Email & SMS notifications",
-    ],
+    id: "shift-job",
+    label: "Shift & Job Allocation",
+    tag: "Shift and Job Allocation",
+    icon: CalendarCheck,
+    headline: "Keep Track of Shifts, Jobs, and Resources",
+    subHeading: "Ensure optimal coordination of employee and equipment shifts based on energy consumption and productivity.",
+    image: modShift,
+    subFeatures: [
+      { title: "Real-time Shift Data", desc: "Continuous monitoring, analysis, and reporting of operational data during work shifts." },
+      { title: "Resource Allocation", desc: "Distribution and optimization of personnel, machinery, and materials." },
+      { title: "Digital Job Cards", desc: "Digital records containing detailed instructions and work order specs to streamline operations." },
+      { title: "Shift Scheduling", desc: "Automation of work shifts for personnel and machines to optimize resource deployment." },
+      { title: "Time & Attendance", desc: "Tracking employees' work hours and attendance to enhance productivity and compliance." },
+      { title: "Idle vs Productive Time", desc: "Analysis of machine idle time and productive time to enable timely interventions." }
+    ]
   },
   {
-    id: "remote",
-    label: "Remote Access",
-    icon: PanelTop,
-    headline: "Manage from Anywhere",
-    description:
-      "Access plant data, approve work orders, view live dashboards and respond to alerts from any device, anywhere in the world with role-based security.",
-    points: [
-      "Secure remote access",
-      "Role-based permissions",
-      "Multi-plant support",
-      "Full audit log of actions",
-    ],
+    id: "maintenance-sla",
+    label: "Maintenance & SLAs",
+    tag: "Maintenance and SLAs",
+    icon: IconWrench,
+    headline: "Condition Monitoring, Predictive Maintenance & Work Orders",
+    subHeading: "Automate tasks quickly and reduce maintenance costs with Aplos Logix IIoT.",
+    image: modMaint,
+    subFeatures: [
+      { title: "Remote Asset Condition", desc: "Analyze real-time data on asset health and performance from any location." },
+      { title: "Predictive Maintenance", desc: "Proactively prevent equipment failures and extend the lifespan of high-value assets." },
+      { title: "Mobile Work Orders", desc: "Digitally access detailed work instructions, asset info, and technician assignments." },
+      { title: "Scheduled Maintenance", desc: "Proactively schedule maintenance based on machine health to improve reliability." },
+      { title: "Asset Repository", desc: "Comprehensive view of your assets to make data-driven maintenance decisions." },
+      { title: "Approval Automation", desc: "Enable workflow automation, user authentication, and conditional approvals." }
+    ]
   },
+  {
+    id: "quality-analysis",
+    label: "Quality Analysis (DigiQA)",
+    tag: "Quality Analysis",
+    icon: IconClipboardCheck,
+    headline: "Meet Standards with Precision & Compliance",
+    subHeading: "Create quality benchmarks and ensure compliance with ISO standards, FDA regulations, and ITAR.",
+    image: modQuality,
+    subFeatures: [
+      { title: "Equipment Health", desc: "Real-time monitoring of machinery condition and performance during testing." },
+      { title: "Production Yield", desc: "Measure the quantity and quality of industrial process output relative to input." },
+      { title: "Traceability", desc: "Track and record product production history to address quality issues fast." },
+      { title: "Regulatory Compliance", desc: "Ensure compliance with ISO, FDA, and ITAR standards to minimize legal risks." },
+      { title: "Material Composition", desc: "Accurately monitor material composition to ensure strict quality standards." },
+      { title: "Defect Analysis", desc: "Analyze production abnormalities to reduce scrap waste and improve efficiency." }
+    ]
+  },
+  {
+    id: "asset-tracking",
+    label: "Asset & Inventory Tracking",
+    tag: "Asset & Inventory Tracking",
+    icon: IconBoxes,
+    headline: "Trace Assets & Stock from Source to Shelf",
+    subHeading: "Access real-time insights and comprehensive visibility to prevent loss and maximize usage.",
+    image: modInventory,
+    subFeatures: [
+      { title: "Asset Identification", desc: "Gain enhanced visibility of assets and perform maintenance as needed." },
+      { title: "Location Tracking", desc: "Track asset locations with BLE, RFID, and GPS to improve logistics and safety." },
+      { title: "Stock Availability", desc: "Monitor stock availability to prevent stock-outs and enhance order fulfillment." },
+      { title: "Service History", desc: "Document all maintenance and service activities to optimize resource allocation." },
+      { title: "Utilization Analysis", desc: "Optimize industrial inventory usage to reduce holding costs." },
+      { title: "Geo-fencing", desc: "Set virtual boundaries to trigger specific alerts when assets or equipment move." }
+    ]
+  },
+  {
+    id: "energy-sustainability",
+    label: "Energy & Sustainability (EMS)",
+    tag: "Energy and Sustainability",
+    icon: Flame,
+    headline: "Optimize Energy Consumption & Reduce Carbon Emissions",
+    subHeading: "Monitor and control energy consumption by HVACs, DGs, Chillers, Compressors, and production machines.",
+    image: modEnergy,
+    subFeatures: [
+      { title: "Energy Consumption Patterns", desc: "Data-driven approach to improving energy efficiency and reducing operational costs." },
+      { title: "Carbon Emissions", desc: "Measure, track, and manage CO2 release and greenhouse gas emissions." },
+      { title: "Waste Generation", desc: "Access real-time insights into industrial waste volumes to reduce environmental impact." },
+      { title: "Renewable Energy Sync", desc: "Integrate solar and renewable energy sources into your existing factory layout." },
+      { title: "Environmental Conditions", desc: "Measure site air quality, noise, ambient temperature, and humidity." },
+      { title: "AI Prediction & Forecasting", desc: "Analyze historical energy demand data to forecast peak load tariffs." }
+    ]
+  },
+  {
+    id: "utilities-monitoring",
+    label: "Utilities Monitoring",
+    tag: "Utilities Monitoring",
+    icon: Droplets,
+    headline: "Unlock Savings Potential with Smart Utilities",
+    subHeading: "Acquire, manage, and report data from power, water, and gas meters, such as voltage, pressure, and leakage.",
+    image: modUtilities,
+    subFeatures: [
+      { title: "Power Quality", desc: "Track voltage stability, frequency, and harmonic distortion to prevent power outages." },
+      { title: "Water Usage", desc: "Monitor facility-wide water consumption patterns in real time." },
+      { title: "Gas Flow & Pressure", desc: "Measure gas flow rates and pressure levels throughout manufacturing pipelines." },
+      { title: "Leak Detection", desc: "Detect water and gas leaks or pressure anomalies instantly to minimize waste." },
+      { title: "Demand Planning", desc: "Monitor real-time utility consumption fluctuations and peak demand." },
+      { title: "Fault Management", desc: "Proactively detect and correct utility infrastructure anomalies." }
+    ]
+  },
+  {
+    id: "safety-controls",
+    label: "Safety & Controls (EHS)",
+    tag: "Safety and Control",
+    icon: ShieldAlert,
+    headline: "For Safe and Secure Manufacturing Operations",
+    subHeading: "Continually monitor fire safety equipment, sprinkler systems, extinguishers, and emergency sirens.",
+    image: modSafety,
+    subFeatures: [
+      { title: "Sprinkler System Status", desc: "Monitor sprinkler system readiness and pressure status continuously." },
+      { title: "Emergency Sirens & Lighting", desc: "Detect emergencies and trigger physical ANDON sirens and evacuation lighting." },
+      { title: "Temperature Monitoring", desc: "Monitor thermal anomalies and hazardous hot spots across panels." },
+      { title: "Extinguisher Status", desc: "Track fire extinguisher availability and pressure status for rapid intervention." },
+      { title: "Smoke & Gas Detection", desc: "Detect smoke, toxic fumes, and gas leaks to notify shop floor personnel immediately." },
+      { title: "Remote EHS Monitoring", desc: "Monitor safety compliance and hazard alarms remotely from any device." }
+    ]
+  }
 ];
 
 /* ──────────────────────────────────────────
