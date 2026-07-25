@@ -4,6 +4,7 @@ import {
   ArrowRight,
   Check,
   ChevronRight,
+  Cpu,
   Quote,
   Shield,
   Star,
@@ -15,7 +16,6 @@ import Container from "../components/common/Container";
 import CTASection from "../components/common/CTASection";
 import CustomerShowcase from "../components/common/CustomerShowcase";
 import DashboardMockup from "../components/common/DashboardMockup";
-import TestAutomationSection from "../components/common/TestAutomationSection";
 
 import {
   homeHero,
@@ -312,127 +312,118 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════
-          § 4 — TEST AUTOMATION (existing)
+          § 4 — IIOT TEST RIG SPOTLIGHT BANNER (Light Redesign)
       ══════════════════════════════════════ */}
-      <TestAutomationSection />
-
-      {/* ══════════════════════════════════════
-          § 5 — PLATFORM FEATURES TABS
-      ══════════════════════════════════════ */}
-      {/* ══════════════════════════════════════
-          § 5 — HOLISTIC SHOP-FLOOR AUTOMATION MASTERY (10 MODULES)
-      ══════════════════════════════════════ */}
-      <section className="py-20 bg-slate-50/80">
+      <section className="py-24 bg-gradient-to-b from-slate-50 via-white to-blue-50/70 soft-grid border-y border-slate-200/60">
         <Container>
-          {/* Section header */}
-          <div className="mb-12 text-center">
-            <span className="inline-block rounded-full bg-blue-100 border border-blue-200 px-4 py-1.5 text-[11px] font-extrabold uppercase tracking-widest text-blue-700">
-              Shop-Floor Automation Mastery
-            </span>
-            <h2 className="mt-4 text-3xl font-black tracking-tight text-blue-950 sm:text-4xl lg:text-5xl max-w-3xl mx-auto leading-tight">
-              Single Destination to Achieve Holistic Shop-Floor Mastery
-            </h2>
-            <p className="mt-4 mx-auto max-w-2xl text-slate-600 text-sm sm:text-base leading-relaxed font-medium">
-              Integrate Aplos Logix IIoT across your equipment, production lines, OEE analytics, shift schedules, maintenance SLAs, DigiQA quality gates, energy, and plant utilities.
-            </p>
-          </div>
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+            {/* Left Column: Text & Features (HIGH CONTRAST LIGHT THEME) */}
+            <div>
+              <span className="inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-cyan-50 px-4 py-1.5 text-[11px] font-extrabold uppercase tracking-widest text-cyan-800 shadow-sm">
+                <Cpu size={14} className="text-cyan-700" />
+                IIoT Test Automation Infrastructure
+              </span>
 
-          {/* 10 Module Tab Buttons */}
-          <div className="mb-10 flex flex-wrap justify-center gap-2 max-w-5xl mx-auto">
-            {platformFeatures.map((tab) => {
-              const Icon = tab.icon;
-              const active = activeTab === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  id={`tab-${tab.id}`}
-                  onClick={() => {
-                    setActiveTab(tab.id);
-                    setActiveSubIndex(0);
-                  }}
-                  className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-extrabold transition-all duration-200 ${active
-                    ? "bg-blue-700 text-white shadow-lg shadow-blue-700/25 ring-2 ring-blue-600"
-                    : "border border-slate-200 bg-white text-slate-700 hover:border-blue-300 hover:text-blue-700 hover:bg-slate-50"
-                    }`}
-                >
-                  <Icon size={14} />
-                  <span>{tab.label}</span>
-                </button>
-              );
-            })}
-          </div>
+              <h2 className="mt-5 text-3xl font-black tracking-tight text-[#04264c] sm:text-5xl leading-tight">
+                IIoT Smart Test Rig &amp; <br />
+                <span className="bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">Automated Inspection Suite</span>
+              </h2>
 
-          {/* Tab content panel */}
-          {activeFeature && (
-            <div key={activeFeature.id} className="grid gap-10 overflow-hidden rounded-3xl border border-slate-200 bg-white p-8 shadow-xl lg:grid-cols-2 lg:items-center lg:p-12 animate-fade-in-up">
-              {/* Left Column: Details & Accordion Sub-features */}
-              <div>
-                <span className="inline-block rounded-full bg-orange-100 border border-orange-200 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-orange-700 mb-3">
-                  {activeFeature.tag}
-                </span>
-                <h3 className="text-2xl font-black tracking-tight text-blue-950 sm:text-3xl leading-snug">
-                  {activeFeature.headline}
-                </h3>
-                <p className="mt-3 text-sm sm:text-base leading-relaxed text-slate-600 font-medium">
-                  {activeFeature.subHeading}
-                </p>
+              <p className="mt-4 text-sm sm:text-base leading-relaxed text-slate-700 font-medium">
+                End-of-line electrical safety testing (HV Withstand, Insulation Res, Earth Bond), live oscilloscope signal telemetry, automated BIS report compliance, and instant WhatsApp alerts.
+              </p>
 
-                {/* Sub-features Accordion / Grid List */}
-                {activeFeature.subFeatures && (
-                  <div className="mt-6 space-y-2.5 max-h-[340px] overflow-y-auto pr-2 custom-scrollbar">
-                    {activeFeature.subFeatures.map((sub, idx) => {
-                      const isSubActive = activeSubIndex === idx;
-                      return (
-                        <div
-                          key={sub.title}
-                          onClick={() => setActiveSubIndex(idx)}
-                          className={`cursor-pointer rounded-2xl border p-3.5 transition duration-200 ${isSubActive
-                            ? "border-blue-400 bg-blue-50/70 shadow-sm"
-                            : "border-slate-100 bg-slate-50/50 hover:bg-slate-100/80"
-                            }`}
-                        >
-                          <h4 className="text-xs font-extrabold text-blue-950 flex items-center justify-between">
-                            <span>{sub.title}</span>
-                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${isSubActive ? "bg-blue-600 text-white" : "bg-slate-200 text-slate-600"}`}>
-                              {isSubActive ? "Active View" : "Explore"}
-                            </span>
-                          </h4>
-                          <p className="mt-1 text-xs text-slate-600 leading-relaxed font-normal">
-                            {sub.desc}
-                          </p>
-                        </div>
-                      );
-                    })}
+              <div className="mt-6 grid grid-cols-2 gap-3 text-xs">
+                {[
+                  "HV Withstand (5.00 kV AC)",
+                  "Earth Bond Resistance (25A)",
+                  "Thermal Barcode Printing",
+                  "WhatsApp Defect Dispatch",
+                  "Oscilloscope Waveform Sync",
+                  "IEC 60601-1 / IS 302-1 Standards",
+                ].map((feat) => (
+                  <div key={feat} className="flex items-center gap-2 font-bold text-slate-800 bg-white border border-slate-200 p-2.5 rounded-xl shadow-sm">
+                    <span className="h-2 w-2 rounded-full bg-cyan-600 shrink-0" />
+                    {feat}
                   </div>
-                )}
-
-                <div className="mt-8 flex items-center gap-4">
-                  <ButtonLink to="/solutions" arrow>Explore Solution</ButtonLink>
-                  <ButtonLink to="/contact" variant="outline">Book Consultation</ButtonLink>
-                </div>
+                ))}
               </div>
 
-              {/* Right Column: High-Res WebP Dashboard Screenshot */}
-              <div className="relative overflow-hidden rounded-2xl border-2 border-slate-200 bg-[#021329] p-3 shadow-2xl transition duration-500 hover:shadow-2xl hover:border-blue-400">
-                <div className="mb-2 flex items-center justify-between border-b border-white/10 pb-2 px-1">
-                  <span className="text-[10px] font-extrabold uppercase tracking-widest text-blue-200 flex items-center gap-1.5">
-                    <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                    Live IIoT Telemetry Panel
-                  </span>
-                  <span className="text-[10px] font-bold text-amber-400 bg-amber-400/10 border border-amber-400/20 px-2 py-0.5 rounded-full">
-                    {activeFeature.label}
-                  </span>
-                </div>
-                <img
-                  key={activeFeature.id}
-                  src={activeFeature.image}
-                  alt={activeFeature.headline}
-                  className="w-full h-auto rounded-xl object-cover shadow-inner transition duration-300 hover:scale-[1.01]"
-                  loading="lazy"
-                />
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <Link
+                  to="/test-rig"
+                  className="inline-flex items-center gap-2.5 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 px-6 py-3.5 text-sm font-black text-white shadow-lg shadow-orange-600/25 transition hover:shadow-xl hover:scale-[1.02]"
+                >
+                  Launch Interactive Test Rig Simulator <ArrowRight size={16} />
+                </Link>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-5 py-3.5 text-sm font-extrabold text-slate-800 shadow-sm transition hover:bg-slate-50"
+                >
+                  Book Demo <ChevronRight size={16} />
+                </Link>
               </div>
             </div>
-          )}
+
+            {/* Right Column: Dark Telemetry Screen Pod for Oscilloscope Visibility */}
+            <div className="relative rounded-3xl border border-slate-800 bg-[#021329] p-6 shadow-2xl">
+              <div className="flex items-center justify-between border-b border-cyan-500/20 pb-3 mb-4">
+                <div className="flex items-center gap-2">
+                  <span className="h-3 w-3 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="text-xs font-mono font-bold text-cyan-300">BENCH-IIOT-01 [PASS GATED]</span>
+                </div>
+                <span className="rounded-full bg-emerald-500/20 px-3 py-1 text-[10px] font-black text-emerald-400 border border-emerald-500/30">
+                  SYSTEM READY
+                </span>
+              </div>
+
+              {/* Mini SVG Oscilloscope */}
+              <div className="h-28 w-full rounded-xl border border-cyan-500/20 bg-slate-950/80 p-3 relative overflow-hidden">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:16px_16px] opacity-40" />
+                <svg className="w-full h-full relative z-10" viewBox="0 0 300 80" preserveAspectRatio="none">
+                  <path
+                    d="M 0 40 Q 30 10, 60 40 T 120 40 T 180 40 T 240 40 T 300 40"
+                    fill="none"
+                    stroke="#22d3ee"
+                    strokeWidth="2.5"
+                    className="animate-pulse"
+                  />
+                  <path
+                    d="M 0 40 Q 30 70, 60 40 T 120 40 T 180 40 T 240 40 T 300 40"
+                    fill="none"
+                    stroke="#34d399"
+                    strokeWidth="1.5"
+                    strokeDasharray="4 4"
+                  />
+                </svg>
+              </div>
+
+              {/* Mini Numerical Gauges */}
+              <div className="mt-4 grid grid-cols-3 gap-2 text-center text-xs font-mono">
+                <div className="rounded-lg bg-slate-900/90 p-2 border border-slate-800">
+                  <p className="text-[10px] text-slate-400">HV WITHSTAND</p>
+                  <p className="text-sm font-bold text-cyan-400">1.48 kV</p>
+                </div>
+                <div className="rounded-lg bg-slate-900/90 p-2 border border-slate-800">
+                  <p className="text-[10px] text-slate-400">EARTH BOND</p>
+                  <p className="text-sm font-bold text-emerald-400">0.042 Ω</p>
+                </div>
+                <div className="rounded-lg bg-slate-900/90 p-2 border border-slate-800">
+                  <p className="text-[10px] text-slate-400">INSULATION</p>
+                  <p className="text-sm font-bold text-amber-400">540 MΩ</p>
+                </div>
+              </div>
+
+              <div className="mt-4 text-center">
+                <Link
+                  to="/test-rig"
+                  className="inline-flex items-center gap-1.5 text-xs font-black text-cyan-400 hover:text-cyan-300 transition"
+                >
+                  Open Full Interactive Test Console <ChevronRight size={14} />
+                </Link>
+              </div>
+            </div>
+          </div>
         </Container>
       </section>
 
