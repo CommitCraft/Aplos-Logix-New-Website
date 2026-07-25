@@ -17,8 +17,7 @@ export default function Footer() {
           <BrandLogo light />
 
           <p className="mt-4 max-w-xs text-xs leading-6 text-slate-300 font-medium">
-            Aplos Logix builds IIoT, digital quality and production intelligence
-            systems for connected manufacturing operations.
+            Aplos Logix delivers IIoT, digital quality, smart automation and production intelligence solutions for connected Industry 4.0 manufacturing.
           </p>
 
           {/* Social Badges */}
@@ -42,11 +41,11 @@ export default function Footer() {
           </div>
 
           {/* Direct Support Box */}
-          <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-3.5 backdrop-blur">
+          {/* <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-3.5 backdrop-blur">
             <p className="text-[11px] font-black uppercase tracking-wider text-orange-400">Direct Engineering Line</p>
             <p className="mt-1 text-xs font-bold text-white">{company.phone[0]}</p>
             <p className="mt-0.5 text-[10px] text-slate-400">{company.hours}</p>
-          </div>
+          </div> */}
         </div>
 
         {/* 4 FOOTER MENU COLUMNS */}
