@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import {
   ArrowRight,
   CheckCircle2,
@@ -108,10 +108,37 @@ const CARD_THEMES = {
 };
 
 export default function Solutions() {
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState("what");
   const [activeModuleId, setActiveModuleId] = useState("machinemonitoring");
   const [activeStageId, setActiveStageId] = useState("collect");
   const [selectedCategory, setSelectedCategory] = useState("all");
+
+  useEffect(() => {
+    const rawHash = location.hash.replace("#", "").toLowerCase();
+    if (rawHash) {
+      let targetModuleId = "";
+      if (rawHash === "oee") targetModuleId = "oeemonitoring";
+      else if (rawHash === "ems") targetModuleId = "energymonitoring";
+      else if (rawHash === "qms") targetModuleId = "qualitymonitoring";
+      else if (rawHash === "andon") targetModuleId = "linemonitoring";
+      else targetModuleId = rawHash;
+
+      const found = holisticModules.find((m) => m.id === targetModuleId);
+      if (found) {
+        setActiveModuleId(found.id);
+      }
+
+      setTimeout(() => {
+        const elem = document.getElementById("holistic-mastery") || document.getElementById("solutions-grid");
+        if (elem) {
+          elem.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location]);
 
   const currentFaq = whatWhyHowData[activeTab];
   const activeModule = holisticModules.find((m) => m.id === activeModuleId) || holisticModules[0];
@@ -588,7 +615,7 @@ export default function Solutions() {
       {/* ══════════════════════════════════════
           § 5 — HOLISTIC SHOP-FLOOR MASTERY MODULE SWITCHER (Single Destination)
       ══════════════════════════════════════ */}
-      <section className="py-20 bg-slate-900 text-white aplos-grid overflow-hidden">
+      <section id="holistic-mastery" className="py-20 bg-slate-900 text-white aplos-grid overflow-hidden">
         <Container>
           <div className="mb-14 text-center">
             <span className="inline-block rounded-full border border-blue-400/30 bg-blue-400/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-widest text-blue-400">
@@ -788,6 +815,47 @@ export default function Solutions() {
                 </div>
               );
             })}
+          </div>
+
+          {/* Specialized Standalone Systems Banner (DigiQA & IIoT Test Rig) */}
+          <div className="mt-14 grid gap-6 md:grid-cols-2">
+            {/* DigiQA Banner Card */}
+            <div className="group relative overflow-hidden rounded-3xl border-2 border-cyan-100 bg-gradient-to-br from-cyan-50 via-white to-slate-50 p-7 shadow-md transition-all duration-300 hover:border-cyan-400 hover:shadow-2xl hover:-translate-y-1">
+              <span className="inline-block rounded-full bg-cyan-100 border border-cyan-200 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-cyan-800 mb-3">
+                Dedicated Software Suite
+              </span>
+              <h3 className="text-xl font-black text-slate-900">
+                DigiQA Digital Inspection &amp; Traceability
+              </h3>
+              <p className="mt-2 text-xs leading-relaxed text-slate-600 font-medium">
+                Full stage quality gating, serial genealogy search, rejection analytics, automated BIS test certificate generation, and supplier CAPA tracking.
+              </p>
+              <Link
+                to="/digiqa"
+                className="mt-6 inline-flex items-center gap-2 rounded-xl bg-cyan-700 px-5 py-2.5 text-xs font-black text-white shadow-md transition hover:bg-cyan-800"
+              >
+                Launch DigiQA Dedicated Suite <ArrowRight size={14} />
+              </Link>
+            </div>
+
+            {/* IIoT Test Rig Banner Card */}
+            <div className="group relative overflow-hidden rounded-3xl border-2 border-orange-100 bg-gradient-to-br from-orange-50 via-white to-slate-50 p-7 shadow-md transition-all duration-300 hover:border-orange-400 hover:shadow-2xl hover:-translate-y-1">
+              <span className="inline-block rounded-full bg-orange-100 border border-orange-200 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-orange-800 mb-3">
+                Dedicated Hardware &amp; Rig Suite
+              </span>
+              <h3 className="text-xl font-black text-slate-900">
+                IIoT Smart Test Rig &amp; Inspection Bench
+              </h3>
+              <p className="mt-2 text-xs leading-relaxed text-slate-600 font-medium">
+                HV withstand, insulation resistance, earth bond testing, real-time SVG oscilloscope waveform telemetry, WhatsApp defect alerts, and barcode label printing.
+              </p>
+              <Link
+                to="/test-rig"
+                className="mt-6 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 px-5 py-2.5 text-xs font-black text-white shadow-md transition hover:scale-[1.02]"
+              >
+                Launch Test Rig Interactive Console <ArrowRight size={14} />
+              </Link>
+            </div>
           </div>
 
           {/* 10 Essential Capabilities & Cause & Effect Showcase */}

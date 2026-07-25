@@ -1,45 +1,76 @@
 export const navigation = [
   { label: "Home", to: "/" },
-  { label: "Solutions", to: "/solutions" },
-  { label: "IIoT Test Rig", to: "/test-rig" },
-  { label: "DigiQA", to: "/digiqa" },
-  { label: "Industries", to: "/industries" },
+  {
+    label: "Solutions",
+    to: "/solutions",
+    children: [
+      { label: "IIoT Smart Test Rig", to: "/test-rig", desc: "HV withstand, insulation & safety bench" },
+      { label: "DigiQA Software", to: "/digiqa", desc: "Digital inspection & traceability suite" },
+      { label: "OEE & Downtime Intelligence", to: "/solutions#oee", desc: "Real-time OEE & availability tracking" },
+      { label: "Energy EMS Dashboard", to: "/solutions#ems", desc: "Multi-meter power & gas telemetry" },
+      { label: "Quality QMS Suite", to: "/solutions#qms", desc: "CAPA workflows & digital quality audits" },
+      { label: "ANDON TV Dashboards", to: "/solutions#andon", desc: "Shop-floor visual alert escalation" },
+    ],
+  },
+  {
+    label: "Industries",
+    to: "/industries",
+    children: [
+      { label: "White Goods & Appliances", to: "/industries", desc: "High-volume appliance safety & QA" },
+      { label: "EV & Battery Manufacturing", to: "/industries", desc: "Pack genealogy & cell formation" },
+      { label: "Automotive Components", to: "/industries", desc: "Tier 1/2 IATF-ready records" },
+      { label: "General Manufacturing", to: "/industries", desc: "Machine connectivity & daily reports" },
+    ],
+  },
   { label: "Technology", to: "/technology" },
   { label: "Case Studies", to: "/case-studies" },
-  { label: "About Us", to: "/about" },
-  { label: "Contact Us", to: "/contact" },
+  {
+    label: "Company",
+    to: "/about",
+    children: [
+      { label: "About", to: "/about", desc: "Our history & manufacturing expertise" },
+      { label: "Contact & Support", to: "/contact?type=support", desc: "Get in touch with us" },
+    ],
+  },
 ];
 
 export const footerColumns = [
   {
-    title: "Solutions & Platform",
+    title: "IIoT & Software",
     links: [
       { label: "IIoT Smart Test Rig", to: "/test-rig" },
-      { label: "DigiQA Software", to: "/digiqa" },
-      { label: "OEE & Downtime", to: "/solutions" },
-      { label: "Energy EMS Dashboard", to: "/solutions" },
-      { label: "Quality QMS Suite", to: "/solutions" },
-      { label: "ANDON TV Dashboards", to: "/solutions" },
+      { label: "DigiQA Quality Software", to: "/digiqa" },
+      { label: "OEE & Downtime Intelligence", to: "/solutions#oee" },
+      { label: "Energy EMS Telemetry", to: "/solutions#ems" },
+      { label: "Quality QMS Suite", to: "/solutions#qms" },
+      { label: "ANDON Visual Dashboards", to: "/solutions#andon" },
     ],
   },
   {
-    title: "Manufacturing Verticals",
+    title: "Industry Verticals",
     links: [
       { label: "White Goods & Appliances", to: "/industries" },
-      { label: "EV & Battery Manufacturing", to: "/industries" },
+      { label: "EV & Battery Production", to: "/industries" },
       { label: "Automotive Components", to: "/industries" },
       { label: "General Manufacturing", to: "/industries" },
-      { label: "Edge Technology Stack", to: "/technology" },
+      { label: "Industrial Edge Technology", to: "/technology" },
     ],
   },
   {
-    title: "Company & Support",
+    title: "Company & Proof",
     links: [
       { label: "About Aplos Logix", to: "/about" },
       { label: "Customer Case Studies", to: "/case-studies" },
-      { label: "Factory Assessment", to: "/contact" },
-      { label: "Book a Live Demo", to: "/contact" },
-      { label: "Contact Support", to: "/contact" },
+      { label: "Technology Architecture", to: "/technology" },
+      { label: "Factory Assessments", to: "/contact?type=assessment" },
+    ],
+  },
+  {
+    title: "Actions & Support",
+    links: [
+      { label: "Book a Live Demo", to: "/contact?type=demo" },
+      { label: "Request On-site Audit", to: "/contact?type=assessment" },
+      { label: "Contact Engineering Support", to: "/contact?type=support" },
     ],
   },
 ];

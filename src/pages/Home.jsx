@@ -299,10 +299,10 @@ export default function Home() {
                   </ul>
 
                   <Link
-                    to="/solutions"
-                    className="mt-6 inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 transition-all group-hover:gap-2.5"
+                    to={mod.to || "/solutions"}
+                    className="mt-6 inline-flex items-center gap-1.5 text-xs font-black text-orange-600 transition-all group-hover:gap-2.5 group-hover:text-orange-700"
                   >
-                    Learn more <ArrowRight size={13} />
+                    {mod.ctaLabel || "Learn More"} <ArrowRight size={13} />
                   </Link>
                 </article>
               );

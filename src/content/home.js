@@ -69,6 +69,8 @@ export const solutionModules = [
     title: "Manufacturing Execution",
     description:
       "Real-time production tracking, work order management and shop-floor control from a single pane of glass.",
+    to: "/solutions",
+    ctaLabel: "Explore MES Solutions",
     features: [
       "Work Order Management",
       "Production Scheduling",
@@ -80,14 +82,16 @@ export const solutionModules = [
     icon: Network,
     color: "violet",
     badge: "IIoT",
-    title: "IIoT Connectivity",
+    title: "IIoT & Test Automation",
     description:
-      "Connect PLCs, sensors, testers and legacy machines with secure edge-to-cloud data streaming and protocol bridging.",
+      "Connect PLCs, sensors, safety test benches and legacy machines with secure edge-to-cloud telemetry.",
+    to: "/test-rig",
+    ctaLabel: "Launch Test Rig Console",
     features: [
-      "PLC & SCADA Integration",
-      "Edge Data Processing",
-      "Protocol Bridging",
-      "Secure Cloud Sync",
+      "HV Electrical Safety Test",
+      "Oscilloscope Signal Telemetry",
+      "Protocol Bridging (OPC-UA)",
+      "WhatsApp Defect Alerts",
     ],
   },
   {
@@ -97,6 +101,8 @@ export const solutionModules = [
     title: "OEE & Downtime Intelligence",
     description:
       "Track Availability, Performance and Quality across machines, lines, shifts and plants in real time.",
+    to: "/solutions#oee",
+    ctaLabel: "View OEE Analytics",
     features: [
       "OEE Dashboard",
       "Downtime Reason Codes",
@@ -111,6 +117,8 @@ export const solutionModules = [
     title: "Energy Monitoring",
     description:
       "Monitor energy consumption, demand trends, power factor and utility costs with real-time metering data.",
+    to: "/solutions#ems",
+    ctaLabel: "Explore EMS Dashboard",
     features: [
       "Real-time Energy Trends",
       "Demand Forecasting",
@@ -122,9 +130,11 @@ export const solutionModules = [
     icon: ClipboardCheck,
     color: "sky",
     badge: "QMS",
-    title: "Quality Management",
+    title: "Digital Quality (DigiQA)",
     description:
       "Digitize inspections, manage CAPAs, track rejections and maintain audit-ready quality records end to end.",
+    to: "/digiqa",
+    ctaLabel: "Explore DigiQA Suite",
     features: [
       "Digital Inspections",
       "Rejection Analysis",
@@ -139,6 +149,8 @@ export const solutionModules = [
     title: "Maintenance Management",
     description:
       "Schedule preventive maintenance, track breakdowns, manage work orders and reduce unplanned stoppages.",
+    to: "/solutions",
+    ctaLabel: "Explore Maintenance SLA",
     features: [
       "Preventive Scheduling",
       "Breakdown Alerts",

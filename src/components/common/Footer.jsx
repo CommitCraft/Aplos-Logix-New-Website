@@ -1,4 +1,4 @@
-import { Linkedin, Mail, MapPin, Phone, Youtube } from "lucide-react";
+import { ChevronRight, Linkedin, Mail, MapPin, Phone, Youtube } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { footerColumns, company } from "../../content/site";
@@ -10,127 +10,146 @@ export default function Footer() {
   const emails = Array.isArray(company.email) ? company.email : [company.email];
 
   return (
-    <footer className="bg-[#04264c] text-white">
-      <Container className="grid gap-10 py-12 md:grid-cols-2 lg:grid-cols-[1.25fr_repeat(3,1fr)_1.35fr]">
-        {/* BRAND */}
+    <footer className="bg-[#021329] text-white border-t border-slate-800">
+      <Container className="grid gap-10 py-16 md:grid-cols-2 lg:grid-cols-[1.3fr_repeat(4,1fr)] xl:grid-cols-[1.4fr_repeat(4,1fr)]">
+        {/* BRAND PROFILE */}
         <div>
           <BrandLogo light />
 
-          <p className="mt-4 max-w-xs text-sm leading-6 text-blue-100/80">
+          <p className="mt-4 max-w-xs text-xs leading-6 text-slate-300 font-medium">
             Aplos Logix builds IIoT, digital quality and production intelligence
             systems for connected manufacturing operations.
           </p>
 
-          <div className="mt-5 flex gap-2">
-            {[Linkedin, Youtube].map((Icon, i) => (
-              <span
-                key={i}
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 transition hover:bg-white/20"
-              >
-                <Icon size={17} />
-              </span>
-            ))}
+          {/* Social Badges */}
+          <div className="mt-6 flex gap-3">
+            {[
+              { icon: Linkedin, href: "#", label: "LinkedIn" },
+              { icon: Youtube, href: "#", label: "YouTube" },
+            ].map((soc) => {
+              const Icon = soc.icon;
+              return (
+                <a
+                  key={soc.label}
+                  href={soc.href}
+                  aria-label={soc.label}
+                  className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 text-slate-200 transition hover:bg-orange-600 hover:text-white"
+                >
+                  <Icon size={16} />
+                </a>
+              );
+            })}
+          </div>
+
+          {/* Direct Support Box */}
+          <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-3.5 backdrop-blur">
+            <p className="text-[11px] font-black uppercase tracking-wider text-orange-400">Direct Engineering Line</p>
+            <p className="mt-1 text-xs font-bold text-white">{company.phone[0]}</p>
+            <p className="mt-0.5 text-[10px] text-slate-400">{company.hours}</p>
           </div>
         </div>
 
-        {/* FOOTER LINKS */}
+        {/* 4 FOOTER MENU COLUMNS */}
         {footerColumns.map((column) => (
           <div key={column.title}>
-            <h3 className="text-sm font-black">{column.title}</h3>
+            <h3 className="text-xs font-black uppercase tracking-wider text-orange-400 border-b border-white/10 pb-2">
+              {column.title}
+            </h3>
 
             <div className="mt-4 space-y-2.5">
               {column.links.map((link) => (
                 <Link
                   key={link.label}
                   to={link.to}
-                  className="block text-sm text-blue-100/75 transition hover:text-white"
+                  className="group flex items-center gap-1.5 text-xs text-slate-300 font-medium transition hover:text-orange-400 hover:translate-x-1.5"
                 >
-                  {link.label}
+                  <ChevronRight size={12} className="text-slate-500 transition group-hover:text-orange-400 shrink-0" />
+                  <span>{link.label}</span>
                 </Link>
               ))}
             </div>
           </div>
         ))}
+      </Container>
 
-        {/* CONTACT */}
-        <div>
-          <h3 className="text-sm font-black">Contact</h3>
-
-          <div className="mt-4 space-y-4">
-            {/* HEAD OFFICE */}
-            {/* <div className="flex gap-3">
-              <MapPin size={16} className="mt-1 shrink-0 text-orange-400" />
-
-              <div>
-                <p className="text-sm font-bold text-white">Head Office</p>
-                <p className="mt-1 text-xs leading-5 text-blue-100/70">
-                  {company.location}
-                </p>
-              </div>
-            </div> */}
-
-            {/* WORKSHOP */}
-            {/* <div className="flex gap-3">
-              <MapPin size={16} className="mt-1 shrink-0 text-orange-400" />
-
-              <div>
-                <p className="text-sm font-bold text-white">Workshop Unit</p>
-                <p className="mt-1 text-xs leading-5 text-blue-100/70">
-                  {company.workshopLocation}
-                </p>
-              </div>
-            </div> */}
-
-            {/* PHONE */}
-            <div className="flex gap-3">
-              <Phone size={16} className="mt-1 shrink-0 text-orange-400" />
-
-              <div>
-                <p className="text-sm font-bold text-white">Phone</p>
-
-                <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1">
-                  {uniquePhones.map((phone) => (
-                    <a
-                      key={phone}
-                      href={`tel:${phone.replace(/\s/g, "")}`}
-                      className="text-xs leading-5 text-blue-100/70 transition hover:text-white"
-                    >
-                      {phone}
-                    </a>
-                  ))}
-                </div>
-              </div>
+      {/* LOCATIONS & CONTACT SUB-STRIP */}
+      <div className="border-t border-slate-800/80 bg-slate-950/80 py-8">
+        <Container className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 text-xs">
+          {/* Head Office */}
+          <div className="flex gap-3">
+            <MapPin size={16} className="mt-0.5 shrink-0 text-orange-400" />
+            <div>
+              <p className="font-bold text-white">Head Office</p>
+              <p className="mt-0.5 text-[11px] leading-4 text-slate-400">
+                {company.location}
+              </p>
             </div>
+          </div>
 
-            {/* EMAIL */}
-            <div className="flex gap-3">
-              <Mail size={16} className="mt-1 shrink-0 text-orange-400" />
+          {/* Workshop Unit */}
+          <div className="flex gap-3">
+            <MapPin size={16} className="mt-0.5 shrink-0 text-amber-400" />
+            <div>
+              <p className="font-bold text-white">Workshop Unit</p>
+              <p className="mt-0.5 text-[11px] leading-4 text-slate-400">
+                {company.workshopLocation}
+              </p>
+            </div>
+          </div>
 
-              <div>
-                <p className="text-sm font-bold text-white">Email</p>
-
-                <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1">
-                  {emails.map((email) => (
-                    <a
-                      key={email}
-                      href={`mailto:${email}`}
-                      className="text-xs leading-5 text-blue-100/70 transition hover:text-white"
-                    >
-                      {email}
-                    </a>
-                  ))}
-                </div>
+          {/* Phone */}
+          <div className="flex gap-3">
+            <Phone size={16} className="mt-0.5 shrink-0 text-emerald-400" />
+            <div>
+              <p className="font-bold text-white">Phones</p>
+              <div className="mt-0.5 flex flex-wrap gap-x-2 gap-y-1">
+                {uniquePhones.map((phone) => (
+                  <a
+                    key={phone}
+                    href={`tel:${phone.replace(/\s/g, "")}`}
+                    className="text-[11px] text-slate-300 hover:text-orange-400 transition"
+                  >
+                    {phone}
+                  </a>
+                ))}
               </div>
             </div>
           </div>
-        </div>
-      </Container>
 
-      {/* BOTTOM BAR */}
-      <div className="border-t border-white/10">
-        <Container className="flex flex-col gap-3 py-5 text-xs text-blue-100/60 sm:flex-row sm:items-center sm:justify-between">
+          {/* Email */}
+          <div className="flex gap-3">
+            <Mail size={16} className="mt-0.5 shrink-0 text-cyan-400" />
+            <div>
+              <p className="font-bold text-white">Email Us</p>
+              <div className="mt-0.5 flex flex-wrap gap-x-2 gap-y-1">
+                {emails.map((email) => (
+                  <a
+                    key={email}
+                    href={`mailto:${email}`}
+                    className="text-[11px] text-slate-300 hover:text-orange-400 transition"
+                  >
+                    {email}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Container>
+      </div>
+
+      {/* BOTTOM COPYRIGHT BAR */}
+      <div className="border-t border-slate-900 bg-slate-950 py-4">
+        <Container className="flex flex-col gap-3 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between font-medium">
           <p>© 2026 Aplos Logix Pvt. Ltd. All rights reserved.</p>
-          <p>Industrial Quality • IIoT • Production Intelligence</p>
+          <div className="flex flex-wrap gap-4 text-[11px]">
+            <Link to="/solutions" className="hover:text-white transition">IIoT Solutions</Link>
+            <span>•</span>
+            <Link to="/digiqa" className="hover:text-white transition">DigiQA Suite</Link>
+            <span>•</span>
+            <Link to="/test-rig" className="hover:text-white transition">Test Rig Bench</Link>
+            <span>•</span>
+            <Link to="/contact" className="hover:text-white transition">Contact</Link>
+          </div>
         </Container>
       </div>
     </footer>
