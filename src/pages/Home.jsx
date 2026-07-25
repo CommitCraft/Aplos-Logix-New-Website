@@ -70,6 +70,7 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState("machine-monitoring");
   const activeFeature = platformFeatures.find((f) => f.id === activeTab) || platformFeatures[0];
   const [activeSubIndex, setActiveSubIndex] = useState(0);
+  const [activeIndustryFilter, setActiveIndustryFilter] = useState("all");
 
   return (
     <main className="overflow-hidden">
@@ -88,7 +89,7 @@ export default function Home() {
             </span>
 
             {/* Headline with rotating word */}
-            <h1 className="text-5xl font-black leading-[1.06] tracking-tight text-white sm:text-6xl lg:text-[4.25rem]">
+            <h1 className="text-4xl font-black leading-[1.06] tracking-tight text-white sm:text-6xl lg:text-[4.25rem]">
               Industrial{" "}
               <span
                 className={`text-orange-400 transition-all duration-300 inline-block ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
@@ -438,65 +439,114 @@ export default function Home() {
       {/* ══════════════════════════════════════
           § 6 — INDUSTRY USE CASES
       ══════════════════════════════════════ */}
-      <section className="py-20 bg-white">
+      {/* ══════════════════════════════════════
+          § 6 — INDUSTRY USE CASES (Light Redesign)
+      ══════════════════════════════════════ */}
+      <section className="py-24 bg-gradient-to-b from-white via-slate-50 to-blue-50/50 soft-grid">
         <Container>
+          {/* Header */}
           <div className="mb-12 text-center">
-            <span className="inline-block rounded-full bg-orange-50 px-4 py-1.5 text-[11px] font-bold uppercase tracking-widest text-orange-600">
-              Industries
+            <span className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-4 py-1.5 text-[11px] font-extrabold uppercase tracking-widest text-orange-700 shadow-sm">
+              Tailored Manufacturing Solutions
             </span>
-            <h2 className="mt-4 text-4xl font-black tracking-tight text-blue-950 sm:text-5xl">
-              Built for Your Industry
+            <h2 className="mt-4 text-3xl font-black tracking-tight text-[#04264c] sm:text-5xl">
+              Built for Your Manufacturing Vertical
             </h2>
-            <p className="mt-4 mx-auto max-w-xl text-slate-600">
-              Deep domain expertise in the manufacturing verticals that need precision, traceability and continuous improvement most.
+            <p className="mt-4 mx-auto max-w-2xl text-base text-slate-600 font-medium">
+              Deep domain expertise in precision assembly, safety testing, battery formation, and high-speed discrete manufacturing.
             </p>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-            {industryUseCases.map((ind) => {
-              const Icon = ind.icon;
-              return (
-                <article
-                  key={ind.industry}
-                  className="group relative overflow-hidden rounded-3xl bg-blue-950 shadow-lg transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl min-h-[290px] flex flex-col"
-                >
-                  {/* Background image */}
-                  <img
-                    src={ind.image}
-                    alt={ind.industry}
-                    className="absolute inset-0 h-full w-full object-cover opacity-35 transition-transform duration-500 group-hover:scale-105"
-                  />
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-950/95 via-blue-950/50 to-transparent" />
+          {/* Industry & Solutions Category Filter Pills */}
+          <div className="mb-10 flex flex-wrap justify-center gap-2">
+            {[
+              { id: "all", label: "All Solutions & Verticals" },
+              { id: "oee", label: "OEE & Downtime" },
+              { id: "ems", label: "Energy (EMS)" },
+              { id: "qms", label: "Quality (QMS)" },
+              { id: "white-goods", label: "White Goods" },
+              { id: "battery", label: "EV & Battery" },
+              { id: "automotive", label: "Automotive" },
+            ].map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setActiveIndustryFilter(cat.id)}
+                className={`rounded-full px-4 py-2 text-xs font-extrabold transition-all duration-200 ${
+                  activeIndustryFilter === cat.id
+                    ? "bg-orange-600 text-white shadow-lg shadow-orange-600/25 ring-2 ring-orange-500"
+                    : "border border-slate-200 bg-white text-slate-700 hover:border-orange-300 hover:text-orange-700"
+                }`}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
 
-                  {/* Content */}
-                  <div className="relative z-10 flex flex-col justify-between flex-1 p-6">
-                    <div>
-                      <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/10">
-                        <Icon size={18} className="text-orange-400" />
+          {/* Grid of Light-Theme Cards */}
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {industryUseCases
+              .filter((ind) => {
+                if (activeIndustryFilter === "all") return true;
+                if (activeIndustryFilter === "oee") return ind.industry.includes("OEE");
+                if (activeIndustryFilter === "ems") return ind.industry.includes("EMS") || ind.industry.includes("Energy");
+                if (activeIndustryFilter === "qms") return ind.industry.includes("QMS") || ind.industry.includes("Quality");
+                if (activeIndustryFilter === "white-goods") return ind.industry.includes("White Goods");
+                if (activeIndustryFilter === "battery") return ind.industry.includes("Battery");
+                if (activeIndustryFilter === "automotive") return ind.industry.includes("Automotive");
+                return true;
+              })
+              .map((ind) => {
+                const Icon = ind.icon;
+                return (
+                  <article
+                    key={ind.industry}
+                    className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border-2 border-slate-100 bg-white shadow-md transition-all duration-300 hover:-translate-y-2 hover:border-orange-300 hover:shadow-2xl"
+                  >
+                    {/* Top Image Banner */}
+                    <div className="relative h-44 w-full overflow-hidden bg-slate-900">
+                      <img
+                        src={ind.image}
+                        alt={ind.industry}
+                        className="h-full w-full object-cover opacity-85 transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent" />
+                      
+                      {/* Floating Icon Pill */}
+                      <div className="absolute bottom-3 left-4 flex h-10 w-10 items-center justify-center rounded-2xl bg-orange-500 text-white shadow-lg shadow-orange-500/30 ring-2 ring-white">
+                        <Icon size={20} />
                       </div>
-                      <h3 className="text-base font-black leading-tight text-white">{ind.industry}</h3>
-                      <p className="mt-2 text-[12px] leading-5 text-blue-200">{ind.description}</p>
                     </div>
 
-                    <div className="mt-4">
-                      {ind.metrics.map((m) => (
-                        <div key={m} className="flex items-center gap-1.5 text-[11px] font-bold text-emerald-400 mb-1">
-                          <span className="h-1 w-1 rounded-full bg-emerald-400 shrink-0" />
-                          {m}
-                        </div>
-                      ))}
-                      <Link
-                        to="/industries"
-                        className="mt-3 inline-flex items-center gap-1 text-[11px] font-bold text-orange-400 hover:gap-2 transition-all"
-                      >
-                        Learn More <ArrowRight size={11} />
-                      </Link>
+                    {/* Body Content */}
+                    <div className="flex flex-col justify-between flex-1 p-5 text-slate-900">
+                      <div>
+                        <h3 className="text-base font-black text-slate-950 leading-snug group-hover:text-orange-600 transition">
+                          {ind.industry}
+                        </h3>
+                        <p className="mt-2 text-xs leading-5 text-slate-600 font-normal">
+                          {ind.description}
+                        </p>
+                      </div>
+
+                      <div className="mt-5 border-t border-slate-100 pt-3 space-y-1.5">
+                        {ind.metrics.map((m) => (
+                          <div key={m} className="flex items-center gap-2 text-[11px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200/60 px-2.5 py-1 rounded-lg">
+                            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0 animate-pulse" />
+                            {m}
+                          </div>
+                        ))}
+                        
+                        <Link
+                          to="/industries"
+                          className="mt-3 inline-flex items-center gap-1.5 text-xs font-black text-orange-600 transition-all group-hover:gap-2.5 group-hover:text-orange-700"
+                        >
+                          Explore Use Cases <ArrowRight size={13} />
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                </article>
-              );
-            })}
+                  </article>
+                );
+              })}
           </div>
         </Container>
       </section>
@@ -504,29 +554,25 @@ export default function Home() {
       {/* ══════════════════════════════════════
           § 7 — WHY APLOS LOGIX (premium redesign)
       ══════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-24 bg-[#04264c] aplos-grid">
-        {/* Decorative blur orbs */}
-        <div className="pointer-events-none absolute -top-40 -left-40 h-96 w-96 rounded-full bg-blue-500/10 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-orange-500/10 blur-3xl" />
-
+      <section className="relative overflow-hidden py-24 bg-gradient-to-b from-slate-50 via-white to-blue-50/60 soft-grid">
         <Container>
           {/* Centered section header */}
           <div className="mb-14 text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-orange-400/30 bg-orange-400/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-widest text-orange-400">
+            <span className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-4 py-1.5 text-[11px] font-extrabold uppercase tracking-widest text-orange-700 shadow-sm">
               Why Aplos Logix
             </span>
-            <h2 className="mt-5 text-4xl font-black leading-[1.07] tracking-tight text-white sm:text-5xl">
+            <h2 className="mt-5 text-4xl font-black leading-[1.07] tracking-tight text-[#04264c] sm:text-5xl">
               Why Manufacturers<br />
-              <span className="text-orange-400">Choose Aplos Logix</span>
+              <span className="bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">Choose Aplos Logix</span>
             </h2>
-            <p className="mt-4 mx-auto max-w-2xl text-base leading-7 text-blue-200">
+            <p className="mt-4 mx-auto max-w-2xl text-base leading-7 text-slate-600 font-medium">
               Purpose-built for Indian and global manufacturing environments — with deep domain expertise and a proven track record of 200+ successful deployments.
             </p>
           </div>
 
           <div className="grid gap-16 lg:grid-cols-2 lg:items-start">
 
-            {/* LEFT: numbered benefits */}
+            {/* LEFT: numbered benefits (LIGHT THEME CARDS) */}
             <div>
               <div className="space-y-3">
                 {benefitsList.map((b, i) => {
@@ -534,19 +580,19 @@ export default function Home() {
                   return (
                     <div
                       key={b.title}
-                      className="group flex items-start gap-5 rounded-2xl border border-white/8 bg-white/5 p-5 backdrop-blur-sm transition-all duration-200 hover:border-orange-400/30 hover:bg-white/8"
+                      className="group flex items-start gap-5 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:border-orange-300 hover:shadow-xl hover:-translate-y-1"
                     >
                       <div className="flex shrink-0 flex-col items-center gap-1">
-                        <span className="text-[10px] font-black tabular-nums text-orange-400/50">
+                        <span className="text-[10px] font-black tabular-nums text-orange-600 font-mono">
                           {String(i + 1).padStart(2, '0')}
                         </span>
-                        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-500/15 ring-1 ring-orange-400/20 transition group-hover:bg-orange-500/25">
-                          <Icon size={18} className="text-orange-400" />
+                        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-50 ring-1 ring-orange-200 text-orange-600 transition group-hover:bg-orange-500 group-hover:text-white">
+                          <Icon size={18} />
                         </div>
                       </div>
                       <div className="pt-0.5">
-                        <p className="font-black text-white">{b.title}</p>
-                        <p className="mt-1 text-sm leading-6 text-blue-200">{b.text}</p>
+                        <p className="font-black text-slate-950">{b.title}</p>
+                        <p className="mt-1 text-sm leading-6 text-slate-600 font-normal">{b.text}</p>
                       </div>
                     </div>
                   );
@@ -558,29 +604,29 @@ export default function Home() {
                 <ButtonLink to="/solutions" arrow>See All Solutions</ButtonLink>
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/10 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/20"
+                  className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-bold text-slate-800 shadow-sm transition hover:bg-slate-50"
                 >
                   Request Demo <ChevronRight size={16} />
                 </Link>
               </div>
             </div>
 
-            {/* RIGHT: live metrics panel */}
+            {/* RIGHT: live metrics panel (LIGHT CARDS + DARK TELEMETRY POD) */}
             <div className="flex flex-col gap-4">
 
-              {/* 4 stat cards — rich design */}
+              {/* 4 stat cards — rich light design */}
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  { ...animatedStats[0], delta: '+18', deltaLabel: 'this year', progress: 82, accent: 'text-orange-400', bar: 'bg-orange-400', ring: 'ring-orange-400/20', iconBg: 'bg-orange-400/15' },
-                  { ...animatedStats[1], delta: '+12K', deltaLabel: 'this year', progress: 74, accent: 'text-emerald-400', bar: 'bg-emerald-400', ring: 'ring-emerald-400/20', iconBg: 'bg-emerald-400/15' },
-                  { ...animatedStats[2], delta: 'SLA', deltaLabel: 'guaranteed', progress: 99, accent: 'text-blue-300', bar: 'bg-blue-400', ring: 'ring-blue-400/20', iconBg: 'bg-blue-400/15' },
-                  { ...animatedStats[3], delta: '365', deltaLabel: 'days/year', progress: 100, accent: 'text-violet-400', bar: 'bg-violet-400', ring: 'ring-violet-400/20', iconBg: 'bg-violet-400/15' },
+                  { ...animatedStats[0], delta: '+18', deltaLabel: 'this year', progress: 82, accent: 'text-orange-600', bar: 'bg-orange-500', ring: 'ring-orange-200', iconBg: 'bg-orange-50' },
+                  { ...animatedStats[1], delta: '+12K', deltaLabel: 'this year', progress: 74, accent: 'text-emerald-600', bar: 'bg-emerald-500', ring: 'ring-emerald-200', iconBg: 'bg-emerald-50' },
+                  { ...animatedStats[2], delta: 'SLA', deltaLabel: 'guaranteed', progress: 99, accent: 'text-blue-700', bar: 'bg-blue-600', ring: 'ring-blue-200', iconBg: 'bg-blue-50' },
+                  { ...animatedStats[3], delta: '365', deltaLabel: 'days/year', progress: 100, accent: 'text-violet-700', bar: 'bg-violet-600', ring: 'ring-violet-200', iconBg: 'bg-violet-50' },
                 ].map((s) => {
                   const Icon = s.icon;
                   return (
                     <div
                       key={s.label}
-                      className={`group flex flex-col gap-3 rounded-2xl border border-white/10 bg-white/6 p-4 backdrop-blur ring-1 ${s.ring} transition hover:bg-white/10`}
+                      className={`group flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm ring-1 ${s.ring} transition hover:shadow-lg`}
                     >
                       {/* Top row */}
                       <div className="flex items-center justify-between">
@@ -589,18 +635,18 @@ export default function Home() {
                         </div>
                         <div className="text-right">
                           <p className={`text-[10px] font-black ${s.accent}`}>{s.delta}</p>
-                          <p className="text-[9px] text-blue-400">{s.deltaLabel}</p>
+                          <p className="text-[9px] text-slate-500 font-medium">{s.deltaLabel}</p>
                         </div>
                       </div>
 
                       {/* Value */}
                       <div>
-                        <p className="text-2xl font-black text-white">{s.value}{s.suffix}</p>
-                        <p className="mt-0.5 text-[10px] font-medium text-blue-300 leading-tight">{s.label}</p>
+                        <p className="text-2xl font-black text-slate-950">{s.value}{s.suffix}</p>
+                        <p className="mt-0.5 text-[10px] font-semibold text-slate-600 leading-tight">{s.label}</p>
                       </div>
 
                       {/* Progress bar */}
-                      <div className="h-1 w-full rounded-full bg-white/10">
+                      <div className="h-1 w-full rounded-full bg-slate-100">
                         <div
                           className={`h-full rounded-full ${s.bar} transition-all duration-1000`}
                           style={{ width: `${s.progress}%` }}
@@ -612,17 +658,17 @@ export default function Home() {
               </div>
 
 
-              {/* OEE Analytics Panel: Bar + Line + Donut */}
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur">
+              {/* OEE Analytics Live Pod (Dark Telemetry Screen for Maximum Readability) */}
+              <div className="rounded-2xl border border-slate-800 bg-[#021329] p-5 text-white shadow-xl">
                 {/* Header */}
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <p className="text-[11px] font-bold uppercase tracking-widest text-blue-300">OEE Trend — Last 10 Shifts</p>
+                    <p className="text-[11px] font-bold uppercase tracking-widest text-cyan-300">OEE Trend — Last 10 Shifts</p>
                     <p className="mt-1 text-2xl font-black text-white">
                       92.4% <span className="text-sm font-semibold text-emerald-400">&#8593; +2.1%</span>
                     </p>
                   </div>
-                  <span className="flex items-center gap-1.5 rounded-full bg-emerald-400/15 px-2.5 py-1 text-[10px] font-black text-emerald-400">
+                  <span className="flex items-center gap-1.5 rounded-full bg-emerald-400/15 px-2.5 py-1 text-[10px] font-black text-emerald-400 border border-emerald-400/30">
                     <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
                     LIVE
                   </span>
@@ -660,7 +706,7 @@ export default function Home() {
                         />
                         {/* Trend line */}
                         <polyline
-                          points="10,38 30,29 50,32 70,25 90,20 110,22 130,15 150,12 170,10 190,8"
+                          points="10,38 30,29 50,32 70,25 90,20 L110,22 L130,15 L150,12 L170,10 L190,8"
                           fill="none"
                           stroke="#34d399"
                           strokeWidth="2"
@@ -674,7 +720,7 @@ export default function Home() {
                       </svg>
                     </div>
                     {/* X axis */}
-                    <div className="mt-1 flex justify-between text-[9px] font-medium text-blue-400">
+                    <div className="mt-1 flex justify-between text-[9px] font-medium text-blue-300">
                       {['S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9', 'S10'].map((s) => <span key={s}>{s}</span>)}
                     </div>
                     {/* Legend */}
@@ -729,18 +775,18 @@ export default function Home() {
               {/* Machine status row */}
               <div className="grid grid-cols-4 gap-3">
                 {[
-                  { label: 'Running', count: 112, color: 'text-emerald-400', dot: 'bg-emerald-400' },
-                  { label: 'Idle', count: 16, color: 'text-yellow-400', dot: 'bg-yellow-400' },
-                  { label: 'Down', count: 4, color: 'text-rose-400', dot: 'bg-rose-400' },
-                  { label: 'Maintenance', count: 2, color: 'text-blue-300', dot: 'bg-blue-300' },
+                  { label: 'Running', count: 112, color: 'text-emerald-700', dot: 'bg-emerald-500' },
+                  { label: 'Idle', count: 16, color: 'text-amber-700', dot: 'bg-amber-500' },
+                  { label: 'Down', count: 4, color: 'text-rose-700', dot: 'bg-rose-500' },
+                  { label: 'Maintenance', count: 2, color: 'text-blue-700', dot: 'bg-blue-500' },
                 ].map((st) => (
                   <div
                     key={st.label}
-                    className="rounded-xl border border-white/10 bg-white/5 p-3 text-center backdrop-blur"
+                    className="rounded-xl border border-slate-200 bg-white p-3 text-center shadow-sm"
                   >
                     <span className={`inline-block h-2 w-2 rounded-full mb-2 ${st.dot}`} />
                     <p className={`text-xl font-black ${st.color}`}>{st.count}</p>
-                    <p className="text-[9px] font-medium leading-tight text-blue-300">{st.label}</p>
+                    <p className="text-[9px] font-bold leading-tight text-slate-600">{st.label}</p>
                   </div>
                 ))}
               </div>

@@ -349,9 +349,36 @@ export const platformFeatures = [
 ];
 
 /* ──────────────────────────────────────────
-   INDUSTRY USE CASES — 5 industries
+   INDUSTRY & SOLUTION USE CASES — 7 verticals
 ────────────────────────────────────────── */
 export const industryUseCases = [
+  {
+    industry: "OEE & Downtime Intelligence",
+    icon: Gauge,
+    color: "orange",
+    description:
+      "Track Availability, Performance, Quality and unplanned downtime root causes across production lines and shifts in real time.",
+    metrics: ["+15% OEE Improvement", "MTTR/MTBF Analytics", "Real-time Downtime Alerts"],
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=85",
+  },
+  {
+    industry: "Energy & Sustainability (EMS)",
+    icon: Flame,
+    color: "emerald",
+    description:
+      "Monitor power consumption, demand forecasting, power factor, and utility costs with automated meter telemetry.",
+    metrics: ["-18% Energy Costs", "Peak Tariff Alerts", "ISO 50001 Compliant"],
+    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=900&q=85",
+  },
+  {
+    industry: "Digital Quality Management (QMS)",
+    icon: ClipboardCheck,
+    color: "blue",
+    description:
+      "Digitize stage inspections, automated BIS reports, CAPA workflows, and end-to-end component serial genealogy.",
+    metrics: ["100% Digital Audits", "Zero Manual QA Logs", "Instant CAPA Triggers"],
+    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=85",
+  },
   {
     industry: "White Goods & Appliances",
     icon: Zap,
@@ -378,15 +405,6 @@ export const industryUseCases = [
       "Station-wise history, process validation, automated test data capture and part genealogy for Tier 1 and Tier 2 suppliers.",
     metrics: ["IATF-Ready Records", "Station History Drill-down", "PPAP Data Automation"],
     image: "https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=900&q=85",
-  },
-  {
-    industry: "Electronics & PCB",
-    icon: Cable,
-    color: "violet",
-    description:
-      "AOI integration, soldering quality, functional test capture and component-level traceability for electronics assembly lines.",
-    metrics: ["PCB-level Traceability", "AOI Data Integration", "Functional Test Capture"],
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=85",
   },
   {
     industry: "General Manufacturing",
