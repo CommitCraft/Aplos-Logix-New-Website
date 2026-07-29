@@ -1,0 +1,6 @@
+# Robots.txt for Aplos Logix - Industrial Quality & IIoT Smart Manufacturing
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://aploslogix.com/sitemap.xml
