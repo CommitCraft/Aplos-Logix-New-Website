@@ -128,7 +128,8 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      const endpoint = import.meta.env.VITE_CONTACT_API_URL || "/api/contact/send";
+      const primaryEndpoint = import.meta.env.VITE_CONTACT_API_URL || "/api/contact/send";
+      const fallbackEndpoint = "/api/contact.php";
 
       const payload = {
         name: formData.name.trim(),
@@ -143,17 +144,40 @@ export default function Contact() {
         website: formData.website, // Honeypot
       };
 
-      const response = await fetch(endpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+      let response;
+      let data;
 
-      const data = await response.json();
+      try {
+        response = await fetch(primaryEndpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        if (response.ok) {
+          data = await response.json();
+        }
+      } catch (e) {
+        console.warn("[Contact Form] Primary endpoint failed, attempting PHP mailer fallback...", e);
+      }
 
-      if (response.ok && data.success) {
+      // If primary endpoint failed or returned non-JSON/404, try PHP fallback
+      if (!data || !data.success) {
+        try {
+          const phpResponse = await fetch(fallbackEndpoint, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+          if (phpResponse.ok) {
+            data = await phpResponse.json();
+            response = phpResponse;
+          }
+        } catch (phpErr) {
+          console.warn("[Contact Form] PHP fallback attempt failed:", phpErr);
+        }
+      }
+
+      if (data && data.success) {
         setServerSuccessMessage(data.message || "Thank you. Your enquiry has been submitted successfully.");
 
         // Clear form after successful submission
@@ -169,7 +193,7 @@ export default function Contact() {
         setFieldErrors({});
       } else {
         setServerErrorMessage(
-          data.message || "An error occurred while submitting your enquiry. Please try again."
+          (data && data.message) || "An error occurred while submitting your enquiry. Please try again or email us directly at info@aploslogix.com."
         );
       }
     } catch (err) {
